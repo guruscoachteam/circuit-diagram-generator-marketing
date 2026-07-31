@@ -1,0 +1,32 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import SEO from '../components/SEO.astro';
+import '../styles/classical.css';
+
+interface Props {
+  title: string;
+  description: string;
+  current?: 'home' | 'pricing' | 'blog' | 'privacy' | 'terms';
+  canonical?: string;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  homeAnchors?: boolean;
+}
+
+const { title, description, current, canonical, jsonLd, homeAnchors = false } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <SEO title={title} description={description} canonical={canonical} jsonLd={jsonLd} />
+  </head>
+  <body>
+    <Nav current={current} />
+    <slot />
+    <div class="wrap">
+      <hr class="hr" style="margin:0;" />
+      <Footer homeAnchors={homeAnchors} />
+    </div>
+  </body>
+</html>

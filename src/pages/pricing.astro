@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import IconCheck from '../components/IconCheck.astro';
+import IconPlus from '../components/IconPlus.astro';
+import { app } from '../lib/app';
+import '../styles/pages.css';
+
+const pricingFaq = [
+  {
+    q: 'Is there a free trial?',
+    a: 'Every plan starts with a 7-day free trial. A card is required to start it, and you can cancel anytime before it ends.',
+  },
+  {
+    q: 'What happens if I use all my AI credits?',
+    a: "You can keep generating at the plan's per-credit overage rate, or upgrade to the next plan for a larger monthly allowance.",
+  },
+  {
+    q: 'Can I switch plans later?',
+    a: 'Yes, upgrade or downgrade anytime from your billing settings; changes apply to your next billing cycle.',
+  },
+  {
+    q: 'Do you offer education or team discounts?',
+    a: 'Contact us from your billing settings for classroom or larger team pricing beyond the Studio plan.',
+  },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Circuit Diagram Generator',
+  description: 'AI circuit diagram generator with manual editing, AI-assisted revisions, simulation and engineering exports.',
+  offers: [
+    { '@type': 'Offer', name: 'Starter', price: '19', priceCurrency: 'USD', url: 'https://www.circuitdiagramgenerator.ai/pricing' },
+    { '@type': 'Offer', name: 'Pro', price: '49', priceCurrency: 'USD', url: 'https://www.circuitdiagramgenerator.ai/pricing' },
+    { '@type': 'Offer', name: 'Studio', price: '99', priceCurrency: 'USD', url: 'https://www.circuitdiagramgenerator.ai/pricing' },
+  ],
+};
+---
+
+<BaseLayout
+  title="Pricing — AI Circuit Diagram Generator | circuitdiagramgenerator.ai"
+  description="Compare Starter, Pro and Studio plans for the AI circuit diagram generator. Every plan opens with a 7-day free trial — credits, seats and export limits compared."
+  current="pricing"
+  canonical="https://www.circuitdiagramgenerator.ai/pricing"
+  jsonLd={jsonLd}
+>
+  <div class="wrap">
+    <section class="pr-hero">
+      <span class="cdg-kicker" style="text-align:center;">Pricing</span>
+      <h1 class="pr-h1">Plans for every bench, classroom and team</h1>
+      <p class="pr-sub">Every plan on the AI circuit diagram generator opens with a 7-day free trial. A card is required to start, and you can cancel anytime before it ends.</p>
+    </section>
+
+    <section class="pr-grid" aria-label="Pricing plans">
+      <div class="card pr-plan">
+        <p class="card-kicker">Starter</p>
+        <h2 class="card-title" style="font-size:26px;">Starter</h2>
+        <p class="pr-price">$19<span>/mo</span></p>
+        <p class="pr-plan-desc">For students and hobbyists getting a first schematic drafted and simulated.</p>
+        <ul>
+          <li><IconCheck />100 AI credits / month</li>
+          <li><IconCheck />1 seat</li>
+          <li><IconCheck />Unlimited saved circuits</li>
+          <li><IconCheck />Built-in simulation</li>
+          <li><IconCheck />PDF &amp; SVG export</li>
+          <li><IconCheck />$0.15 per credit over plan</li>
+        </ul>
+        <a href={app.billing} class="btn btn-secondary btn-block">Start with Starter</a>
+      </div>
+
+      <div class="card pr-plan cdg-featured">
+        <span class="tag tag-outline" style="position:absolute;top:0;right:var(--space-3);transform:translateY(-50%);background:var(--color-bg);">Most popular</span>
+        <p class="card-kicker">Pro</p>
+        <h2 class="card-title" style="font-size:26px;">Pro</h2>
+        <p class="pr-price">$49<span>/mo</span></p>
+        <p class="pr-plan-desc">For engineers and teachers running several projects with room for a small team.</p>
+        <ul>
+          <li><IconCheck />300 AI credits / month</li>
+          <li><IconCheck />Up to 3 seats</li>
+          <li><IconCheck />Unlimited saved circuits</li>
+          <li><IconCheck />Built-in simulation</li>
+          <li><IconCheck />KiCad, Eagle, PDF &amp; SVG export</li>
+          <li><IconCheck />$0.12 per credit over plan</li>
+        </ul>
+        <a href={app.billing} class="btn btn-primary btn-block">Start with Pro</a>
+      </div>
+
+      <div class="card pr-plan">
+        <p class="card-kicker">Studio</p>
+        <h2 class="card-title" style="font-size:26px;">Studio</h2>
+        <p class="pr-price">$99<span>/mo</span></p>
+        <p class="pr-plan-desc">For teams shipping schematics into production documentation at volume.</p>
+        <ul>
+          <li><IconCheck />750 AI credits / month</li>
+          <li><IconCheck />Up to 10 seats</li>
+          <li><IconCheck />Unlimited saved circuits</li>
+          <li><IconCheck />Built-in simulation</li>
+          <li><IconCheck />KiCad, Eagle, PDF &amp; SVG export</li>
+          <li><IconCheck />Priority support</li>
+        </ul>
+        <a href={app.billing} class="btn btn-secondary btn-block">Start with Studio</a>
+      </div>
+    </section>
+
+    <hr class="hr" style="margin:0;" />
+
+    <section class="pr-compare">
+      <span class="cdg-kicker">Compare plans</span>
+      <table class="pr-table">
+        <thead>
+          <tr><th>Feature</th><th>Starter</th><th>Pro</th><th>Studio</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>AI credits / month</td><td>100</td><td>300</td><td>750</td></tr>
+          <tr><td>Seats</td><td>1</td><td>3</td><td>10</td></tr>
+          <tr><td>Saved circuits</td><td>Unlimited</td><td>Unlimited</td><td>Unlimited</td></tr>
+          <tr><td>Prompt-to-schematic</td><td>✓</td><td>✓</td><td>✓</td></tr>
+          <tr><td>Sketch &amp; photo import</td><td>✓</td><td>✓</td><td>✓</td></tr>
+          <tr><td>Built-in simulation</td><td>✓</td><td>✓</td><td>✓</td></tr>
+          <tr><td>PDF &amp; SVG export</td><td>✓</td><td>✓</td><td>✓</td></tr>
+          <tr><td>KiCad &amp; Eagle export</td><td>—</td><td>✓</td><td>✓</td></tr>
+          <tr><td>Overage rate</td><td>$0.15/credit</td><td>$0.12/credit</td><td>$0.10/credit</td></tr>
+          <tr><td>Priority support</td><td>—</td><td>—</td><td>✓</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <hr class="hr" style="margin:0;" />
+
+    <section id="faq" class="cdg-section">
+      <span class="cdg-kicker">Questions</span>
+      <h2 class="cdg-h2">Pricing questions</h2>
+      <div>
+        {pricingFaq.map((item, i) => (
+          <details class="cdg-faq-item" open={i === 0}>
+            <summary>{item.q}<IconPlus /></summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <hr class="hr" style="margin:0;" />
+
+    <section class="pr-cta">
+      <h2>Ready to start?</h2>
+      <a href={app.billing} class="btn btn-primary">Start Free Trial</a>
+      <p class="cdg-note" style="margin-top:var(--space-3);">
+        <a href={app.login}>Already have an account?</a>
+      </p>
+    </section>
+  </div>
+</BaseLayout>

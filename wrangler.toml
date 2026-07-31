@@ -1,0 +1,4 @@
+# Cloudflare Pages project config (optional for Git-connected deploys)
+name = "circuit-diagram-generator"
+compatibility_date = "2026-07-31"
+pages_build_output_dir = "dist"

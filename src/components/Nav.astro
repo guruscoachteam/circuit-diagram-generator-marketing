@@ -1,0 +1,33 @@
+---
+import { app } from '../lib/app';
+
+interface Props {
+  current?: 'home' | 'pricing' | 'blog' | 'privacy' | 'terms';
+}
+const { current } = Astro.props;
+---
+
+<nav class="nav cdg-nav" id="site-nav">
+  <a href="/" class="nav-brand">Circuit Diagram Generator</a>
+  <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" id="nav-toggle">
+    Menu
+  </button>
+  <div class="nav-links" id="nav-links">
+    <a href={current === 'home' ? '#features' : '/#features'}>Features</a>
+    <a href={current === 'home' ? '#how-it-works' : '/#how-it-works'}>How it works</a>
+    <a href="/pricing" aria-current={current === 'pricing' ? 'page' : undefined}>Pricing</a>
+    <a href="/blog" aria-current={current === 'blog' ? 'page' : undefined}>Blog</a>
+    <a href={current === 'home' ? '#faq' : '/#faq'}>FAQ</a>
+    <a href={app.home}>Open studio</a>
+    <a href={app.billing} class="btn btn-primary">Start Free Trial</a>
+  </div>
+</nav>
+
+<script>
+  const nav = document.getElementById('site-nav');
+  const toggle = document.getElementById('nav-toggle');
+  toggle?.addEventListener('click', () => {
+    const open = nav?.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+</script>

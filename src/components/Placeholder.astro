@@ -1,0 +1,31 @@
+---
+interface Props {
+  label?: string;
+  alt: string;
+  aspect?: string;
+}
+const { label = 'Screenshot coming soon', alt, aspect = '4 / 3' } = Astro.props;
+---
+
+<div class="placeholder" style={`aspect-ratio: ${aspect};`} role="img" aria-label={alt}>
+  <span class="placeholder-label">{label}</span>
+</div>
+
+<style>
+  .placeholder {
+    width: 100%;
+    display: grid;
+    place-items: center;
+    background:
+      linear-gradient(135deg, var(--color-accent-100), var(--color-neutral-200) 60%, var(--color-surface));
+    color: color-mix(in srgb, var(--color-text) 55%, transparent);
+    font-family: var(--font-heading);
+    font-size: 14px;
+    text-align: center;
+    padding: var(--space-4);
+  }
+  .placeholder-label {
+    max-width: 28ch;
+    line-height: 1.4;
+  }
+</style>

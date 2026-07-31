@@ -1,0 +1,18 @@
+---
+interface Props {
+  homeAnchors?: boolean;
+}
+const { homeAnchors = false } = Astro.props;
+---
+
+<footer class="cdg-footer">
+  <span>© {new Date().getFullYear()} Circuit Diagram Generator</span>
+  <nav aria-label="Footer">
+    <a href={homeAnchors ? '#features' : '/#features'}>Features</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/blog">Blog</a>
+    <a href={homeAnchors ? '#faq' : '/#faq'}>FAQ</a>
+    <a href="/privacy">Privacy Policy</a>
+    <a href="/terms">Terms</a>
+  </nav>
+</footer>

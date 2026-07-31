@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI Circuit Diagram Generator — Describe It, We'll Draw the Schematic | circuitdiagramgenerator.ai</title>
+<meta name="description" content="Circuit Diagram Generator is the AI circuit diagram generator that turns plain-English prompts or hand-drawn sketches into clean, simulation-ready schematics in seconds. Real parts, real footprints. Free 7-day trial. Export to KiCad, Eagle, PDF & SVG." />
+<meta property="og:title" content="AI Circuit Diagram Generator — circuitdiagramgenerator.ai" />
+<meta property="og:description" content="Describe a circuit or upload a sketch. Our AI drafts, simulates, and exports the schematic for you." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.circuitdiagramgenerator.ai" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="canonical" href="https://www.circuitdiagramgenerator.ai" />
+<link rel="stylesheet" href="_ds/classical-ec01bc9a-096a-41ae-9fda-f2d39230649b/styles.css" />
+<script src="_ds/classical-ec01bc9a-096a-41ae-9fda-f2d39230649b/_ds_bundle.js"></script>
+<script src="image-slot.js"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Circuit Diagram Generator","applicationCategory":"DesignApplication","operatingSystem":"Web","url":"https://www.circuitdiagramgenerator.ai","description":"AI tool that turns plain-English prompts or hand-drawn sketches into simulation-ready circuit schematics.","offers":[{"@type":"Offer","name":"Starter","price":"19","priceCurrency":"USD"},{"@type":"Offer","name":"Pro","price":"49","priceCurrency":"USD"},{"@type":"Offer","name":"Studio","price":"99","priceCurrency":"USD"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is an AI circuit diagram generator?","acceptedAnswer":{"@type":"Answer","text":"It's a tool that turns a plain-English description or a hand-drawn sketch of a circuit into a clean, standards-correct schematic automatically, choosing real components and wiring them to spec."}},
+{"@type":"Question","name":"How accurate are the AI-generated schematics?","acceptedAnswer":{"@type":"Answer","text":"The AI selects real parts with correct footprints and pin mappings, and every generated circuit can be simulated before you build it, so wiring or logic issues surface immediately."}},
+{"@type":"Question","name":"Can I turn a hand-drawn sketch into a schematic?","acceptedAnswer":{"@type":"Answer","text":"Yes. Upload a photo of a sketch and the AI redraws it as a proper schematic with labeled components, ready to edit or simulate."}},
+{"@type":"Question","name":"Can I simulate the circuit before building it?","acceptedAnswer":{"@type":"Answer","text":"Yes, every plan includes built-in simulation so you can verify behavior before ordering parts or etching a board."}},
+{"@type":"Question","name":"What export formats are supported?","acceptedAnswer":{"@type":"Answer","text":"Export to KiCad and Eagle project files, plus PDF and SVG for documentation, lesson plans, or sharing."}},
+{"@type":"Question","name":"Is there a free trial?","acceptedAnswer":{"@type":"Answer","text":"Every plan starts with a 7-day trial. A card is required to start it, and you can cancel anytime before it ends."}},
+{"@type":"Question","name":"Who is Circuit Diagram Generator for?","acceptedAnswer":{"@type":"Answer","text":"Students and hobbyists learning electronics, teachers building lesson materials, and engineers who want to move from idea to schematic in minutes."}}
+]}
+</script>
+<style>
+:root{ --leading:26px; --half:13px; --edge:clamp(20px,5vw,72px); --measure:58ch; }
+html{ scroll-behavior:smooth; }
+body{ margin:0; text-wrap:pretty; }
+.wrap{ max-width:1200px; margin:0 auto; padding:0 var(--edge); }
+.cdg-nav{ padding-inline:max(var(--edge), calc((100% - 1200px)/2 + var(--edge))); }
+.cdg-kicker{ display:block; font-size:13px; line-height:var(--half); letter-spacing:0.08em; text-transform:uppercase; color:var(--color-accent-700); font-feature-settings:"tnum" 1; margin:0 0 calc(var(--leading) - var(--half)); }
+.cdg-band{ margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw); padding-left:calc(50vw - 50%); padding-right:calc(50vw - 50%); }
+.cdg-hero-band{ background:linear-gradient(180deg, var(--color-accent-100), var(--color-bg) 85%); }
+.cdg-hero{ padding:calc(3*var(--leading)) 0 calc(2.5*var(--leading)); display:grid; grid-template-columns:minmax(0,6fr) minmax(0,5fr); gap:var(--leading) clamp(24px,5vw,72px); align-items:center; }
+.cdg-tag-kicker{ display:inline-flex; margin:0 0 calc(var(--leading) - var(--half)); }
+.cdg-display{ font-family:var(--font-heading); font-weight:400; font-size:clamp(38px,5vw,68px); line-height:1.1; letter-spacing:-0.01em; margin:0; margin-left:-0.042em; }
+.cdg-display .line{ display:block; }
+.cdg-hero .cdg-sub{ font-size:17px; line-height:var(--leading); max-width:var(--measure); margin:calc(1.5*var(--leading) - 1cap) 0 0; color:color-mix(in srgb, var(--color-text) 82%, transparent); }
+.cdg-hero .cdg-row{ display:flex; gap:var(--space-3); flex-wrap:wrap; margin-top:var(--leading); }
+.cdg-figure{ margin:0; width:100%; }
+.cdg-figure image-slot{ width:100%; aspect-ratio:4/3; }
+.cdg-section{ padding:calc(2.5*var(--leading)) 0; }
+.cdg-h2{ font-family:var(--font-heading); font-weight:400; font-size:34px; line-height:1.2; margin:0 0 calc(1.5*var(--leading)); max-width:38ch; }
+.cdg-steps{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:calc(1.5*var(--leading)); }
+.cdg-step-num{ font-family:var(--font-heading); font-weight:400; font-size:44px; line-height:1; margin:0 0 var(--space-2); color:var(--color-accent); font-feature-settings:"tnum" 1; }
+.cdg-step h3{ font-family:var(--font-heading); font-weight:400; font-size:21px; margin:0 0 var(--space-2); }
+.cdg-step p{ font-size:15.5px; line-height:var(--leading); margin:0; color:color-mix(in srgb, var(--color-text) 78%, transparent); }
+.cdg-grid3{ display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:var(--space-3); }
+.cdg-feature-card{ display:flex; flex-direction:column; gap:var(--space-2); transition:box-shadow .18s ease, border-color .18s ease; }
+.cdg-feature-card:hover{ box-shadow:var(--shadow-sm); border-color:var(--color-accent-400); }
+.cdg-feature-card h3{ font-family:var(--font-heading); font-weight:400; font-size:19px; margin:0; }
+.cdg-feature-card p{ font-size:14.5px; line-height:1.6; margin:0; color:color-mix(in srgb, var(--color-text) 78%, transparent); }
+.cdg-icon-badge{ display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:50%; background:var(--color-accent-100); }
+.cdg-usecases{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:var(--space-4); }
+.cdg-usecase figcaption{ font-size:13px; margin-top:var(--space-2); }
+.cdg-usecase figcaption strong{ display:block; font-family:var(--font-heading); font-weight:600; font-size:15px; color:var(--color-text); margin-bottom:2px; }
+.cdg-quotes{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:calc(1.5*var(--leading)) calc(2*var(--leading)); }
+.cdg-quote blockquote{ font-family:var(--font-heading); font-weight:400; font-size:22px; line-height:1.4; margin:0; text-indent:-0.3em; }
+.cdg-quote figcaption{ font-size:14px; line-height:var(--leading); color:color-mix(in srgb, var(--color-text) 70%, transparent); margin:var(--space-2) 0 0; text-indent:-0.9em; }
+.cdg-pricing{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:var(--space-4); align-items:stretch; }
+.cdg-plan{ position:relative; }
+.cdg-plan-price{ font-family:var(--font-heading); font-weight:400; font-size:38px; line-height:1.1; margin:var(--space-2) 0; font-feature-settings:"tnum" 1; }
+.cdg-plan-price span{ font-size:14px; font-family:var(--font-body); color:color-mix(in srgb, var(--color-text) 60%, transparent); }
+.cdg-plan ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:var(--space-2); font-size:14.5px; }
+.cdg-plan li{ display:flex; align-items:center; gap:8px; color:color-mix(in srgb, var(--color-text) 82%, transparent); }
+.cdg-featured{ border-color:var(--color-accent) !important; box-shadow:var(--shadow-md); background:var(--color-accent-100); }
+.cdg-faq-item{ border-bottom:1px solid var(--color-divider); padding:var(--space-3) 0; }
+.cdg-faq-item summary{ cursor:pointer; list-style:none; font-family:var(--font-heading); font-weight:600; font-size:18px; display:flex; justify-content:space-between; align-items:center; gap:var(--space-3); }
+.cdg-faq-item summary::-webkit-details-marker{ display:none; }
+.cdg-faq-item[open] summary{ color:var(--color-accent-700); }
+.cdg-faq-item p{ font-size:15px; line-height:1.65; color:color-mix(in srgb, var(--color-text) 80%, transparent); margin:var(--space-2) 0 0; max-width:70ch; }
+.cdg-faq-icon{ transition:transform 0.15s ease; flex:none; }
+.cdg-faq-item[open] .cdg-faq-icon{ transform:rotate(45deg); }
+.cdg-dark-band{ background:var(--color-neutral-900); color:var(--color-neutral-100); position:relative; overflow:hidden; }
+.cdg-dark-band .cdg-h2{ color:var(--color-neutral-100); }
+.cdg-dark-band .cdg-sub{ color:color-mix(in srgb, var(--color-neutral-100) 78%, transparent); }
+.cdg-ghost-numeral{ position:absolute; right:clamp(-20px,1vw,20px); bottom:clamp(-90px,-9vw,-40px); font-family:var(--font-heading); font-weight:400; font-size:clamp(90px,12vw,160px); line-height:1; color:color-mix(in srgb, var(--color-accent-400) 16%, transparent); pointer-events:none; user-select:none; z-index:0; }
+.cdg-close{ position:relative; z-index:1; padding:calc(2.5*var(--leading)) 0 calc(4*var(--leading)); text-align:center; }
+.cdg-close h2{ max-width:44ch; margin-left:auto; margin-right:auto; }
+.cdg-close .cdg-sub{ max-width:44ch; margin-left:auto; margin-right:auto; }
+footer.cdg-footer{ padding:calc(1.5*var(--leading)) 0; display:flex; flex-wrap:wrap; gap:var(--space-3); justify-content:space-between; align-items:center; font-size:13px; color:color-mix(in srgb, var(--color-text) 65%, transparent); }
+.cdg-footer nav{ display:flex; gap:var(--space-4); flex-wrap:wrap; }
+.cdg-footer a{ color:inherit; }
+@media (max-width: 900px){ .cdg-hero{ grid-template-columns:1fr; } .cdg-figure{ order:-1; } }
+@media (max-width: 480px){ .cdg-nav a{ display:none; } }
+</style>
+</helmet>
+
+<nav class="nav cdg-nav">
+  <span class="nav-brand">Circuit</span>
+  <a href="#features">Features</a>
+  <a href="#how-it-works">How it works</a>
+  <a href="Pricing.dc.html">Pricing</a>
+  <a href="Blog.dc.html">Blog</a>
+  <a href="#faq">FAQ</a>
+  <a href="https://app.circuitdiagramgenerator.ai" class="btn btn-primary">Start Free Trial</a>
+</nav>
+
+<div class="cdg-band cdg-hero-band">
+<div class="wrap">
+  <section class="cdg-hero">
+    <div>
+      <span class="tag tag-accent cdg-tag-kicker">The AI Circuit Diagram Generator</span>
+      <h1 class="cdg-display"><span class="line">Describe a circuit.</span> <span class="line">Get an editable schematic.</span></h1>
+      <p class="cdg-sub">Circuit Diagram Generator is the AI circuit diagram generator that turns an idea, or a photo of an existing diagram, into a clean schematic you can edit manually, refine with AI, simulate, and export — real parts, correct footprints, wired to spec.</p>
+      <div class="cdg-row">
+        <a href="https://app.circuitdiagramgenerator.ai" class="btn btn-primary">Start Free Trial</a>
+        <a href="Pricing.dc.html" class="btn btn-secondary">See pricing</a>
+      </div>
+      <p style="font-size:13px;color:color-mix(in srgb, var(--color-text) 62%, transparent);margin:16px 0 0;">7-day free trial on every plan · no design experience required</p>
+    </div>
+    <figure class="cdg-figure plate">
+      <image-slot id="hero-diagram" shape="rect" placeholder="Drop a screenshot of a generated schematic here" alt="AI circuit diagram generator output: a 555 timer LED blinker schematic"></image-slot>
+      <figcaption>An AI-generated circuit diagram from the prompt: "555 timer LED blinker, 9V battery"</figcaption>
+    </figure>
+  </section>
+</div>
+</div>
+
+<div class="wrap">
+
+  <hr class="hr" style="margin:0;" />
+
+  <section class="cdg-section" id="how-it-works">
+    <span class="cdg-kicker">How it works</span>
+    <h2 class="cdg-h2">From idea to schematic in three steps</h2>
+    <div class="cdg-steps">
+      <div class="cdg-step"><p class="cdg-step-num">1</p><h3>Describe or sketch it</h3><p>Type a plain-English prompt, or upload a photo of a hand-drawn sketch — either is enough for the AI to start.</p></div>
+      <div class="cdg-step"><p class="cdg-step-num">2</p><h3>The AI drafts the schematic</h3><p>Real components, correct footprints, wired to spec — ready to review, and editable by chatting through changes.</p></div>
+      <div class="cdg-step"><p class="cdg-step-num">3</p><h3>Simulate, refine, export</h3><p>Run a simulation to check behavior, then export straight to KiCad, Eagle, PDF or SVG.</p></div>
+    </div>
+  </section>
+
+  <hr class="hr" style="margin:0;" />
+
+  <section class="cdg-section" id="features">
+    <span class="cdg-kicker">What it does</span>
+    <h2 class="cdg-h2">Everything an AI circuit diagram generator should do</h2>
+    <div class="cdg-grid3">
+      <div class="card cdg-feature-card"><span class="cdg-icon-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--color-accent-700);"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="7" y1="8" x2="17" y2="8"/><line x1="7" y1="12" x2="13" y2="12"/></svg></span><h3>Prompt-to-schematic</h3><p>Describe the circuit you want in plain language and get a complete schematic, not just a block diagram.</p></div>
+      <div class="card cdg-feature-card"><span class="cdg-icon-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--color-accent-700);"><path d="M10.3 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6.3"/><path d="m9 15 3-3a2 2 0 0 1 2.79.02L18 15"/><circle cx="9" cy="9" r="2"/><path d="M16 19h6"/><path d="M19 16v6"/></svg></span><h3>Sketch &amp; photo import</h3><p>Photograph a whiteboard or notebook sketch and the AI redraws it as a clean, labeled schematic.</p></div>
+      <div class="card cdg-feature-card"><span class="cdg-icon-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--color-accent-700);"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span><h3>Built-in simulation</h3><p>Run the circuit before you build it, and catch wiring or logic issues while they're still free to fix.</p></div>
+      <div class="card cdg-feature-card"><span class="cdg-icon-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--color-accent-700);"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></span><h3>Real component library</h3><p>Parts are chosen from a library of real components with accurate pinouts and footprints, not generic symbols.</p></div>
+      <div class="card cdg-feature-card"><span class="cdg-icon-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--color-accent-700);"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg></span><h3>Manual editing, AI-assisted</h3><p>Adjust wiring and parts by hand, or chat a change and let the AI update the schematic without breaking what you've already reviewed.</p></div>
+      <div class="card cdg-feature-card"><span class="cdg-icon-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--color-accent-700);"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span><h3>Engineering exports</h3><p>Send finished schematics to KiCad or Eagle, or export a clean PDF/SVG for documentation and lessons.</p></div>
+    </div>
+  </section>
+
+  <hr class="hr" style="margin:0;" />
+
+  <section class="cdg-section">
+    <span class="cdg-kicker">See it in action</span>
+    <h2 class="cdg-h2">Built for classrooms, workbenches and product teams alike</h2>
+    <div class="cdg-usecases">
+      <figure class="cdg-usecase plate">
+        <image-slot id="usecase-blinker" shape="rect" style="aspect-ratio:4/3;" placeholder="Screenshot: LED blinker schematic"></image-slot>
+        <figcaption><strong>555 timer LED blinker</strong>A teacher generates a labeled schematic from "blink an LED every second" for a lesson handout.</figcaption>
+      </figure>
+      <figure class="cdg-usecase plate">
+        <image-slot id="usecase-power" shape="rect" style="aspect-ratio:4/3;" placeholder="Screenshot: common-emitter amplifier schematic"></image-slot>
+        <figcaption><strong>Common-emitter amplifier</strong>A hobbyist sketches an amplifier stage on paper and imports the photo straight into a working schematic.</figcaption>
+      </figure>
+      <figure class="cdg-usecase plate">
+        <image-slot id="usecase-iot" shape="rect" style="aspect-ratio:4/3;" placeholder="Screenshot: Arduino temperature sensor schematic"></image-slot>
+        <figcaption><strong>Arduino temperature sensor</strong>An engineer describes a sensor node and simulates it before ordering parts.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <hr class="hr" style="margin:0;" />
+
+  <section class="cdg-section">
+    <span class="cdg-kicker">Who's building with it</span>
+    <div class="cdg-quotes">
+      <figure class="cdg-quote">
+        <blockquote>"My students used to lose an hour redrawing schematics by hand. Now they describe the circuit and spend that hour actually learning why it works."</blockquote>
+        <figcaption>— High school physics teacher</figcaption>
+      </figure>
+      <figure class="cdg-quote">
+        <blockquote>"I photographed a sketch from my notebook and had a simulate-ready schematic before my coffee got cold."</blockquote>
+        <figcaption>— Hobbyist, home workbench</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <hr class="hr" style="margin:0;" />
+
+  <section class="cdg-section" id="pricing">
+    <span class="cdg-kicker">Pricing</span>
+    <h2 class="cdg-h2">Plans for every bench, classroom and team</h2>
+    <p class="cdg-sub">Every plan opens with a 7-day free trial — cancel anytime before it ends.</p>
+    <div class="cdg-pricing">
+      <div class="card cdg-plan">
+        <p class="card-kicker">Starter</p>
+        <h3 class="card-title" style="font-size:24px;">Starter</h3>
+        <p class="cdg-plan-price">$19<span>/mo</span></p>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--color-accent);flex:none;"><polyline points="20 6 9 17 4 12"/></svg>100 AI credits / month</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--color-accent);flex:none;"><polyline points="20 6 9 17 4 12"/></svg>Unlimited saved circuits</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--color-accent);flex:none;"><polyline points="20 6 9 17 4 12"/></svg>7-day free trial</li>
+        </ul>
+        <a href="https://app.circuitdiagramgenerator.ai/billing" class="btn btn-secondary btn-block">Start with Starter</a>
+      </div>
+      <div class="card cdg-plan cdg-featured" style="position:relative;">
+        <span class="tag tag-outline" style="position:absolute;top:0;right:var(--space-3);transform:translateY(-50%);background:var(--color-bg);">Most popular</span>
+        <p class="card-kicker">Pro</p>
+        <h3 class="card-title" style="font-size:24px;">Pro</h3>
+        <p class="cdg-plan-price">$49<span>/mo</span></p>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--color-accent);flex:none;"><polyline points="20 6 9 17 4 12"/></svg>300 AI credits / month</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--color-accent);flex:none;"><polyline points="20 6 9 17 4 12"/></svg>Unlimited saved circuits</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--color-accent);flex:none;"><polyline points="20 6 9 17 4 12"/></svg>7-day free trial</li>
+        </ul>
+        <a href="https://app.circuitdiagramgenerator.ai/billing" class="btn btn-primary btn-block">Start with Pro</a>
+      </div>
+      <div class="card cdg-plan">
+        <p class="card-kicker">Studio</p>
+        <h3 class="card-title" style="font-size:24px;">Studio</h3>
+        <p class="cdg-plan-price">$99<span>/mo</span></p>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--color-accent);flex:none;"><polyline points="20 6 9 17 4 12"/></svg>750 AI credits / month</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--color-accent);flex:none;"><polyline points="20 6 9 17 4 12"/></svg>Unlimited saved circuits</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--color-accent);flex:none;"><polyline points="20 6 9 17 4 12"/></svg>7-day free trial</li>
+        </ul>
+        <a href="https://app.circuitdiagramgenerator.ai/billing" class="btn btn-secondary btn-block">Start with Studio</a>
+      </div>
+    </div>
+    <p style="font-size:13px;color:color-mix(in srgb, var(--color-text) 62%, transparent);margin-top:var(--space-4);">Need seat counts, overage rates or a team plan? See the full <a href="Pricing.dc.html">pricing page</a>.</p>
+  </section>
+
+  <hr class="hr" style="margin:0;" />
+
+  <section class="cdg-section" id="faq">
+    <span class="cdg-kicker">Questions</span>
+    <h2 class="cdg-h2">Frequently asked questions</h2>
+    <div>
+      <details class="cdg-faq-item" open><summary>What is an AI circuit diagram generator?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cdg-faq-icon"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary><p>It's a tool that turns a plain-English description or a hand-drawn sketch of a circuit into a clean, standards-correct schematic automatically, choosing real components and wiring them to spec.</p></details>
+      <details class="cdg-faq-item"><summary>How accurate are the AI-generated schematics?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cdg-faq-icon"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary><p>The AI selects real parts with correct footprints and pin mappings, and every generated circuit can be simulated before you build it, so wiring or logic issues surface immediately.</p></details>
+      <details class="cdg-faq-item"><summary>Can I turn a hand-drawn sketch into a schematic?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cdg-faq-icon"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary><p>Yes. Upload a photo of a sketch and the AI redraws it as a proper schematic with labeled components, ready to edit or simulate.</p></details>
+      <details class="cdg-faq-item"><summary>Can I simulate the circuit before building it?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cdg-faq-icon"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary><p>Yes, every plan includes built-in simulation so you can verify behavior before ordering parts or etching a board.</p></details>
+      <details class="cdg-faq-item"><summary>What export formats are supported?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cdg-faq-icon"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary><p>Export to KiCad and Eagle project files, plus PDF and SVG for documentation, lesson plans, or sharing.</p></details>
+      <details class="cdg-faq-item"><summary>Is there a free trial?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cdg-faq-icon"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary><p>Every plan starts with a 7-day trial. A card is required to start it, and you can cancel anytime before it ends.</p></details>
+      <details class="cdg-faq-item"><summary>Who is Circuit Diagram Generator for?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cdg-faq-icon"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary><p>Students and hobbyists learning electronics, teachers building lesson materials, and engineers who want to move from idea to schematic in minutes.</p></details>
+    </div>
+  </section>
+
+  <hr class="hr" style="margin:0;" />
+
+</div>
+
+<div class="cdg-band cdg-dark-band">
+<span class="cdg-ghost-numeral">01</span>
+<div class="wrap">
+  <section class="cdg-close">
+    <h2 class="cdg-h2">Your next schematic is a sentence away</h2>
+    <p class="cdg-sub">Start a 7-day free trial on the AI circuit diagram generator built for students, teachers and engineers — describe a circuit, sketch one, or import a photo, and see it drafted, simulated and export-ready.</p>
+    <div class="cdg-row" style="justify-content:center;">
+      <a href="https://app.circuitdiagramgenerator.ai" class="btn btn-primary">Start Free Trial</a>
+    </div>
+  </section>
+</div>
+</div>
+
+<div class="wrap">
+
+  <hr class="hr" style="margin:0;" />
+
+  <footer class="cdg-footer">
+    <span>© 2026 Circuit Diagram Generator</span>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="Pricing.dc.html">Pricing</a>
+      <a href="Blog.dc.html">Blog</a>
+      <a href="#faq">FAQ</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms</a>
+    </nav>
+  </footer>
+</div>
+
+</x-dc>
+</body>
+</html>

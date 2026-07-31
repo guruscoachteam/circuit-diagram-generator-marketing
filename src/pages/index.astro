@@ -1,0 +1,318 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Placeholder from '../components/Placeholder.astro';
+import IconCheck from '../components/IconCheck.astro';
+import IconPlus from '../components/IconPlus.astro';
+import { app } from '../lib/app';
+import '../styles/pages.css';
+
+const faq = [
+  {
+    q: 'What is an AI circuit diagram generator?',
+    a: "It's a tool that turns a plain-English description or a hand-drawn sketch of a circuit into a clean, standards-correct schematic automatically, choosing real components and wiring them to spec.",
+  },
+  {
+    q: 'How accurate are the AI-generated schematics?',
+    a: 'The AI selects real parts with correct footprints and pin mappings, and every generated circuit can be simulated before you build it, so wiring or logic issues surface immediately.',
+  },
+  {
+    q: 'Can I turn a hand-drawn sketch into a schematic?',
+    a: 'Yes. Upload a photo of a sketch and the AI redraws it as a proper schematic with labeled components, ready to edit or simulate.',
+  },
+  {
+    q: 'Can I simulate the circuit before building it?',
+    a: 'Yes, every plan includes built-in simulation so you can verify behavior before ordering parts or etching a board.',
+  },
+  {
+    q: 'What export formats are supported?',
+    a: 'Export to KiCad and Eagle project files, plus PDF and SVG for documentation, lesson plans, or sharing.',
+  },
+  {
+    q: 'Is there a free trial?',
+    a: 'Every plan starts with a 7-day trial. A card is required to start it, and you can cancel anytime before it ends.',
+  },
+  {
+    q: 'Who is Circuit Diagram Generator for?',
+    a: 'Students and hobbyists learning electronics, teachers building lesson materials, and engineers who want to move from idea to schematic in minutes.',
+  },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Circuit Diagram Generator',
+    applicationCategory: 'DesignApplication',
+    operatingSystem: 'Web',
+    url: 'https://www.circuitdiagramgenerator.ai',
+    description: 'AI tool that turns plain-English prompts or hand-drawn sketches into simulation-ready circuit schematics.',
+    offers: [
+      { '@type': 'Offer', name: 'Starter', price: '19', priceCurrency: 'USD' },
+      { '@type': 'Offer', name: 'Pro', price: '49', priceCurrency: 'USD' },
+      { '@type': 'Offer', name: 'Studio', price: '99', priceCurrency: 'USD' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a },
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Circuit Diagram Generator',
+    url: 'https://www.circuitdiagramgenerator.ai',
+  },
+];
+---
+
+<BaseLayout
+  title="AI Circuit Diagram Generator — Describe It, We'll Draw the Schematic | circuitdiagramgenerator.ai"
+  description="Circuit Diagram Generator is the AI circuit diagram generator that turns plain-English prompts or hand-drawn sketches into clean, simulation-ready schematics in seconds. Real parts, real footprints. Free 7-day trial. Export to KiCad, Eagle, PDF & SVG."
+  current="home"
+  canonical="https://www.circuitdiagramgenerator.ai/"
+  jsonLd={jsonLd}
+  homeAnchors
+>
+  <div class="cdg-band cdg-hero-band">
+    <div class="wrap">
+      <section class="cdg-hero">
+        <div>
+          <span class="tag tag-accent cdg-tag-kicker">The AI Circuit Diagram Generator</span>
+          <h1 class="cdg-display">
+            <span class="line">Describe a circuit.</span>
+            <span class="line">Get an editable schematic.</span>
+          </h1>
+          <p class="cdg-sub">
+            Circuit Diagram Generator is the AI circuit diagram generator that turns an idea, or a photo of an existing diagram, into a clean schematic you can edit manually, refine with AI, simulate, and export — real parts, correct footprints, wired to spec.
+          </p>
+          <div class="cdg-row">
+            <a href={app.signupBilling} class="btn btn-primary">Start Free Trial</a>
+            <a href="/pricing" class="btn btn-secondary">See pricing</a>
+          </div>
+          <p class="cdg-note">
+            7-day free trial on every plan · no design experience required ·
+            <a href={app.login}>Already have an account?</a>
+          </p>
+        </div>
+        <figure class="cdg-figure plate">
+          <Placeholder
+            alt="AI circuit diagram generator output: a 555 timer LED blinker schematic"
+            label="Drop a screenshot of a generated schematic here"
+            aspect="4 / 3"
+          />
+          <figcaption>An AI-generated circuit diagram from the prompt: "555 timer LED blinker, 9V battery"</figcaption>
+        </figure>
+      </section>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <hr class="hr" style="margin:0;" />
+
+    <section class="cdg-section" id="how-it-works">
+      <span class="cdg-kicker">How it works</span>
+      <h2 class="cdg-h2">From idea to schematic in three steps</h2>
+      <div class="cdg-steps">
+        <div class="cdg-step">
+          <p class="cdg-step-num">1</p>
+          <h3>Describe or sketch it</h3>
+          <p>Type a plain-English prompt, or upload a photo of a hand-drawn sketch — either is enough for the AI to start.</p>
+        </div>
+        <div class="cdg-step">
+          <p class="cdg-step-num">2</p>
+          <h3>The AI drafts the schematic</h3>
+          <p>Real components, correct footprints, wired to spec — ready to review, and editable by chatting through changes.</p>
+        </div>
+        <div class="cdg-step">
+          <p class="cdg-step-num">3</p>
+          <h3>Simulate, refine, export</h3>
+          <p>Run a simulation to check behavior, then export straight to KiCad, Eagle, PDF or SVG.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hr" style="margin:0;" />
+
+    <section class="cdg-section" id="features">
+      <span class="cdg-kicker">What it does</span>
+      <h2 class="cdg-h2">Everything an AI circuit diagram generator should do</h2>
+      <div class="cdg-grid3">
+        <div class="card cdg-feature-card">
+          <span class="cdg-icon-badge" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path><line x1="7" y1="8" x2="17" y2="8"></line><line x1="7" y1="12" x2="13" y2="12"></line></svg>
+          </span>
+          <h3>Prompt-to-schematic</h3>
+          <p>Describe the circuit you want in plain language and get a complete schematic, not just a block diagram.</p>
+        </div>
+        <div class="card cdg-feature-card">
+          <span class="cdg-icon-badge" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6.3"></path><path d="m9 15 3-3a2 2 0 0 1 2.79.02L18 15"></path><circle cx="9" cy="9" r="2"></circle><path d="M16 19h6"></path><path d="M19 16v6"></path></svg>
+          </span>
+          <h3>Sketch &amp; photo import</h3>
+          <p>Photograph a whiteboard or notebook sketch and the AI redraws it as a clean, labeled schematic.</p>
+        </div>
+        <div class="card cdg-feature-card">
+          <span class="cdg-icon-badge" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          </span>
+          <h3>Built-in simulation</h3>
+          <p>Run the circuit before you build it, and catch wiring or logic issues while they're still free to fix.</p>
+        </div>
+        <div class="card cdg-feature-card">
+          <span class="cdg-icon-badge" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+          </span>
+          <h3>Real component library</h3>
+          <p>Parts are chosen from a library of real components with accurate pinouts and footprints, not generic symbols.</p>
+        </div>
+        <div class="card cdg-feature-card">
+          <span class="cdg-icon-badge" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><path d="M12 7v5l4 2"></path></svg>
+          </span>
+          <h3>Manual editing, AI-assisted</h3>
+          <p>Adjust wiring and parts by hand, or chat a change and let the AI update the schematic without breaking what you've already reviewed.</p>
+        </div>
+        <div class="card cdg-feature-card">
+          <span class="cdg-icon-badge" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </span>
+          <h3>Engineering exports</h3>
+          <p>Send finished schematics to KiCad or Eagle, or export a clean PDF/SVG for documentation and lessons.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hr" style="margin:0;" />
+
+    <section class="cdg-section">
+      <span class="cdg-kicker">See it in action</span>
+      <h2 class="cdg-h2">Built for classrooms, workbenches and product teams alike</h2>
+      <div class="cdg-usecases">
+        <figure class="cdg-usecase plate">
+          <Placeholder alt="LED blinker schematic screenshot" label="Screenshot: LED blinker schematic" />
+          <figcaption>
+            <strong>555 timer LED blinker</strong>
+            A teacher generates a labeled schematic from "blink an LED every second" for a lesson handout.
+          </figcaption>
+        </figure>
+        <figure class="cdg-usecase plate">
+          <Placeholder alt="Common-emitter amplifier schematic screenshot" label="Screenshot: common-emitter amplifier schematic" />
+          <figcaption>
+            <strong>Common-emitter amplifier</strong>
+            A hobbyist sketches an amplifier stage on paper and imports the photo straight into a working schematic.
+          </figcaption>
+        </figure>
+        <figure class="cdg-usecase plate">
+          <Placeholder alt="Arduino temperature sensor schematic screenshot" label="Screenshot: Arduino temperature sensor schematic" />
+          <figcaption>
+            <strong>Arduino temperature sensor</strong>
+            An engineer describes a sensor node and simulates it before ordering parts.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <hr class="hr" style="margin:0;" />
+
+    <section class="cdg-section">
+      <span class="cdg-kicker">Who's building with it</span>
+      <div class="cdg-quotes">
+        <figure class="cdg-quote">
+          <blockquote>"My students used to lose an hour redrawing schematics by hand. Now they describe the circuit and spend that hour actually learning why it works."</blockquote>
+          <figcaption>— High school physics teacher</figcaption>
+        </figure>
+        <figure class="cdg-quote">
+          <blockquote>"I photographed a sketch from my notebook and had a simulate-ready schematic before my coffee got cold."</blockquote>
+          <figcaption>— Hobbyist, home workbench</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <hr class="hr" style="margin:0;" />
+
+    <section class="cdg-section" id="pricing">
+      <span class="cdg-kicker">Pricing</span>
+      <h2 class="cdg-h2">Plans for every bench, classroom and team</h2>
+      <p class="cdg-sub">Every plan opens with a 7-day free trial — cancel anytime before it ends.</p>
+      <div class="cdg-pricing" style="margin-top: calc(1.5 * var(--leading));">
+        <div class="card cdg-plan">
+          <p class="card-kicker">Starter</p>
+          <h3 class="card-title" style="font-size:24px;">Starter</h3>
+          <p class="cdg-plan-price">$19<span>/mo</span></p>
+          <ul>
+            <li><IconCheck />100 AI credits / month</li>
+            <li><IconCheck />Unlimited saved circuits</li>
+            <li><IconCheck />7-day free trial</li>
+          </ul>
+          <a href={app.billing} class="btn btn-secondary btn-block">Start with Starter</a>
+        </div>
+        <div class="card cdg-plan cdg-featured">
+          <span class="tag tag-outline" style="position:absolute;top:0;right:var(--space-3);transform:translateY(-50%);background:var(--color-bg);">Most popular</span>
+          <p class="card-kicker">Pro</p>
+          <h3 class="card-title" style="font-size:24px;">Pro</h3>
+          <p class="cdg-plan-price">$49<span>/mo</span></p>
+          <ul>
+            <li><IconCheck />300 AI credits / month</li>
+            <li><IconCheck />Unlimited saved circuits</li>
+            <li><IconCheck />7-day free trial</li>
+          </ul>
+          <a href={app.billing} class="btn btn-primary btn-block">Start with Pro</a>
+        </div>
+        <div class="card cdg-plan">
+          <p class="card-kicker">Studio</p>
+          <h3 class="card-title" style="font-size:24px;">Studio</h3>
+          <p class="cdg-plan-price">$99<span>/mo</span></p>
+          <ul>
+            <li><IconCheck />750 AI credits / month</li>
+            <li><IconCheck />Unlimited saved circuits</li>
+            <li><IconCheck />7-day free trial</li>
+          </ul>
+          <a href={app.billing} class="btn btn-secondary btn-block">Start with Studio</a>
+        </div>
+      </div>
+      <p class="cdg-note" style="margin-top:var(--space-4);">
+        Need seat counts, overage rates or a team plan? See the full <a href="/pricing">pricing page</a>.
+      </p>
+    </section>
+
+    <hr class="hr" style="margin:0;" />
+
+    <section class="cdg-section" id="faq">
+      <span class="cdg-kicker">Questions</span>
+      <h2 class="cdg-h2">Frequently asked questions</h2>
+      <div>
+        {faq.map((item, i) => (
+          <details class="cdg-faq-item" open={i === 0}>
+            <summary>{item.q}<IconPlus /></summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <hr class="hr" style="margin:0;" />
+  </div>
+
+  <div class="cdg-band cdg-dark-band">
+    <span class="cdg-ghost-numeral" aria-hidden="true">01</span>
+    <div class="wrap">
+      <section class="cdg-close">
+        <h2 class="cdg-h2">Your next schematic is a sentence away</h2>
+        <p class="cdg-sub">
+          Start a 7-day free trial on the AI circuit diagram generator built for students, teachers and engineers — describe a circuit, sketch one, or import a photo, and see it drafted, simulated and export-ready.
+        </p>
+        <div class="cdg-row">
+          <a href={app.billing} class="btn btn-primary">Start Free Trial</a>
+        </div>
+        <p class="cdg-note" style="margin-top:var(--space-3);color:color-mix(in srgb, var(--color-neutral-100) 70%, transparent);">
+          <a href={app.login} style="color:var(--color-accent-300);">Already have an account?</a>
+        </p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>
