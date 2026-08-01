@@ -1,4 +1,9 @@
-# Cloudflare Pages project config (optional for Git-connected deploys)
+# Cloudflare Workers + Assets (required for Keystatic SSR with modern Astro)
 name = "circuit-diagram-generator"
 compatibility_date = "2026-07-31"
-pages_build_output_dir = "dist"
+compatibility_flags = ["nodejs_compat"]
+
+# Keystatic session storage (GitHub OAuth)
+[[kv_namespaces]]
+binding = "SESSION"
+id = "f7964c2d3d9a45738a80c30cf93d9043"

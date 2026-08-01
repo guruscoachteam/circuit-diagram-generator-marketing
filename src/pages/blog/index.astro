@@ -1,0 +1,68 @@
+---
+export const prerender = true;
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Placeholder from '../../components/Placeholder.astro';
+import { getPublishedPosts, formatPostDate, postPath } from '../../lib/blog';
+import '../../styles/pages.css';
+
+const posts = await getPublishedPosts();
+---
+
+<BaseLayout
+  title="Blog — AI Circuit Diagram Generator | circuitdiagramgenerator.ai"
+  description="Guides, tutorials and updates from the AI circuit diagram generator team: schematic design tips, simulation walkthroughs, and export workflows."
+  current="blog"
+  canonical="https://www.circuitdiagramgenerator.ai/blog"
+>
+  <div class="wrap">
+    <section class="blog-hero">
+      <span class="cdg-kicker">Blog</span>
+      <h1 class="blog-h1">Notes on AI circuit design</h1>
+      <p class="blog-sub">
+        Guides and updates on turning prompts and sketches into working schematics with the AI circuit diagram generator.
+      </p>
+    </section>
+
+    <hr class="hr" style="margin:0;" />
+
+    {posts.length === 0 ? (
+      <section class="blog-empty">
+        <p class="title">The first posts are on the way.</p>
+        <p class="body">Check back soon for schematic walkthroughs, simulation tips and export guides.</p>
+        <a href="/" class="btn btn-secondary">Back to home</a>
+      </section>
+    ) : (
+      <section class="blog-grid" aria-label="Blog posts">
+        {posts.map((post) => (
+          <article class="blog-card">
+            <a href={postPath(post)} class="blog-card-media plate">
+              {post.data.heroImage ? (
+                <img src={post.data.heroImage} alt="" loading="lazy" />
+              ) : (
+                <Placeholder
+                  alt=""
+                  label={post.data.title}
+                  aspect="16 / 10"
+                />
+              )}
+            </a>
+            <div class="blog-card-body">
+              {post.data.tags?.[0] && (
+                <span class="blog-card-tag">{post.data.tags[0]}</span>
+              )}
+              <h2>
+                <a href={postPath(post)}>{post.data.title}</a>
+              </h2>
+              <p>{post.data.description}</p>
+              <p class="meta">
+                <time datetime={post.data.pubDate.toISOString()}>
+                  {formatPostDate(post.data.pubDate)}
+                </time>
+              </p>
+            </div>
+          </article>
+        ))}
+      </section>
+    )}
+  </div>
+</BaseLayout>
