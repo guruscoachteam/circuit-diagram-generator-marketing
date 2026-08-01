@@ -233,7 +233,8 @@ figcaption {
   color: var(--color-text);
   text-decoration: none;
   line-height: 1.2;
-  max-width: min(52vw, 14rem);
+  max-width: min(58vw, 16rem);
+  overflow-wrap: break-word;
 }
 
 .nav a { color: var(--color-text-secondary); text-decoration: none; font-size: 14.5px; font-weight: 500; }

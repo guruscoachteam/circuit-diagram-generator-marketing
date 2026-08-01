@@ -2,6 +2,7 @@
 export const prerender = true;
 import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { app } from '../../lib/app';
 import { formatPostDate, getPublishedPosts, postPath } from '../../lib/blog';
 import '../../styles/pages.css';
 
@@ -44,36 +45,56 @@ const jsonLd = {
   canonical={canonical}
   jsonLd={jsonLd}
 >
-  <article class="wrap post">
-    <header class="post-header">
-      <p class="post-back"><a href="/blog">← Blog</a></p>
-      <span class="cdg-kicker">Article</span>
-      <h1 class="post-title">{post.data.title}</h1>
-      <p class="post-desc">{post.data.description}</p>
-      <p class="post-meta">
-        <time datetime={post.data.pubDate.toISOString()}>{formatPostDate(post.data.pubDate)}</time>
-        {post.data.tags?.length > 0 && (
-          <>
-            <span aria-hidden="true"> · </span>
-            <span>{post.data.tags.join(', ')}</span>
-          </>
-        )}
-      </p>
-    </header>
-
-    {post.data.heroImage && (
-      <figure class="post-hero plate">
-        <img src={post.data.heroImage} alt="" />
-      </figure>
-    )}
-
-    <div class="post-content">
-      <Content />
+  <article class="post">
+    <div class="post-masthead">
+      <div class="post-inner">
+        <header class="post-header">
+          <p class="post-back"><a href="/blog">← All articles</a></p>
+          {post.data.tags?.length > 0 && (
+            <ul class="post-tags">
+              {post.data.tags.map((tag) => (
+                <li><span class="tag tag-accent">{tag}</span></li>
+              ))}
+            </ul>
+          )}
+          <h1 class="post-title">{post.data.title}</h1>
+          <p class="post-desc">{post.data.description}</p>
+          <p class="post-meta">
+            <time datetime={post.data.pubDate.toISOString()}>{formatPostDate(post.data.pubDate)}</time>
+            {post.data.updatedDate && (
+              <>
+                <span aria-hidden="true"> · </span>
+                <span>Updated {formatPostDate(post.data.updatedDate)}</span>
+              </>
+            )}
+          </p>
+        </header>
+      </div>
     </div>
 
-    <footer class="post-footer">
-      <a href="https://app.circuitdiagramgenerator.ai/signup?next=/billing" class="btn btn-primary">Start Free Trial</a>
-      <a href="/blog" class="btn btn-secondary">More articles</a>
-    </footer>
+    <div class="post-inner post-body">
+      {post.data.heroImage && (
+        <figure class="post-hero plate">
+          <img src={post.data.heroImage} alt="" />
+        </figure>
+      )}
+
+      <div class="post-content">
+        <Content />
+      </div>
+    </div>
+
+    <div class="cdg-band post-cta-band">
+      <div class="post-inner">
+        <section class="post-cta">
+          <h2>Try it on your next circuit</h2>
+          <p>Describe a circuit or upload a sketch — get an editable schematic in minutes.</p>
+          <div class="post-cta-actions">
+            <a href={app.signupBilling} class="btn btn-primary">Start Free Trial</a>
+            <a href="/blog" class="btn btn-secondary">More articles</a>
+          </div>
+        </section>
+      </div>
+    </div>
   </article>
 </BaseLayout>
