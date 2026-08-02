@@ -14,7 +14,31 @@ export default defineConfig({
     sessionKVBindingName: 'SESSION',
     prerenderEnvironment: 'node',
   }),
-  integrations: [sitemap(), react(), markdoc(), keystatic()],
+  integrations: [
+    sitemap({
+      filter: (page) =>
+        !page.includes('/keystatic') &&
+        !page.includes('/api/'),
+      changefreq: 'weekly',
+      priority: 0.7,
+      lastmod: new Date(),
+      serialize(item) {
+        if (item.url === 'https://www.circuitdiagramgenerator.ai/') {
+          return { ...item, changefreq: 'weekly', priority: 1.0 };
+        }
+        if (item.url.includes('/pricing')) {
+          return { ...item, changefreq: 'monthly', priority: 0.9 };
+        }
+        if (item.url.includes('/blog')) {
+          return { ...item, changefreq: 'weekly', priority: 0.8 };
+        }
+        return item;
+      },
+    }),
+    react(),
+    markdoc(),
+    keystatic(),
+  ],
   build: {
     format: 'directory',
   },

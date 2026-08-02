@@ -10,15 +10,19 @@ import '../styles/pages.css';
 const faq = [
   {
     q: 'What is an AI circuit diagram generator?',
-    a: "It's a tool that turns a plain-English description or a hand-drawn sketch of a circuit into a clean, standards-correct schematic automatically, choosing real components and wiring them to spec.",
+    a: 'An AI circuit diagram generator turns a plain-English description or a photo of a hand-drawn sketch into a clean, standards-correct schematic automatically — choosing real components and wiring them to spec.',
+  },
+  {
+    q: 'Can I use an AI circuit diagram generator from text?',
+    a: 'Yes. Type a prompt like "555 timer LED blinker, 9V battery" and Circuit Diagram Generator drafts a complete schematic with real parts, correct footprints, and labeled connections.',
+  },
+  {
+    q: 'Can I generate a circuit diagram from an image or sketch?',
+    a: 'Yes. Upload a photo of a whiteboard, notebook sketch, or existing diagram and the AI redraws it as a proper labeled schematic — ready to edit, simulate, or export.',
   },
   {
     q: 'How accurate are the AI-generated schematics?',
     a: 'The AI selects real parts with correct footprints and pin mappings, and every generated circuit can be simulated before you build it, so wiring or logic issues surface immediately.',
-  },
-  {
-    q: 'Can I turn a hand-drawn sketch into a schematic?',
-    a: 'Yes. Upload a photo of a sketch and the AI redraws it as a proper schematic with labeled components, ready to edit or simulate.',
   },
   {
     q: 'Can I simulate the circuit before building it?',
@@ -41,12 +45,39 @@ const faq = [
 const jsonLd = [
   {
     '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Circuit Diagram Generator',
+    alternateName: [
+      'AI Circuit Diagram Generator',
+      'Circuit Diagram Generator AI',
+    ],
+    url: 'https://www.circuitdiagramgenerator.ai',
+    description:
+      'AI circuit diagram generator from text or image — turn prompts and sketches into editable, simulation-ready schematics.',
+    publisher: {
+      '@type': 'Organization',
+      name: 'Circuit Diagram Generator',
+      url: 'https://www.circuitdiagramgenerator.ai',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name: 'Circuit Diagram Generator',
+    alternateName: 'AI Circuit Diagram Generator',
     applicationCategory: 'DesignApplication',
     operatingSystem: 'Web',
     url: 'https://www.circuitdiagramgenerator.ai',
-    description: 'AI tool that turns plain-English prompts or hand-drawn sketches into simulation-ready circuit schematics.',
+    description:
+      'AI circuit diagram generator that turns plain-English prompts or photos of sketches into simulation-ready circuit schematics. Generate from text or from image, edit, simulate, and export to KiCad, Eagle, PDF & SVG.',
+    featureList: [
+      'AI circuit diagram generator from text',
+      'AI circuit diagram generator from image',
+      'Built-in circuit simulation',
+      'Real component library with footprints',
+      'Manual and AI-assisted editing',
+      'Export to KiCad, Eagle, PDF, SVG',
+    ],
     offers: [
       { '@type': 'Offer', name: 'Starter', price: '19', priceCurrency: 'USD' },
       { '@type': 'Offer', name: 'Pro', price: '49', priceCurrency: 'USD' },
@@ -67,13 +98,15 @@ const jsonLd = [
     '@type': 'Organization',
     name: 'Circuit Diagram Generator',
     url: 'https://www.circuitdiagramgenerator.ai',
+    logo: 'https://www.circuitdiagramgenerator.ai/og-image.jpg',
   },
 ];
 ---
 
 <BaseLayout
-  title="AI Circuit Diagram Generator — Describe It, We'll Draw the Schematic | circuitdiagramgenerator.ai"
-  description="Circuit Diagram Generator is the AI circuit diagram generator that turns plain-English prompts or hand-drawn sketches into clean, simulation-ready schematics in seconds. Real parts, real footprints. Free 7-day trial. Export to KiCad, Eagle, PDF & SVG."
+  title="AI Circuit Diagram Generator from Text or Image"
+  description="AI circuit diagram generator from text or image. Editable, simulation-ready schematics. Free trial. Export KiCad, Eagle, PDF & SVG."
+  keywords="ai circuit diagram generator, ai circuit diagram generator from text, ai circuit diagram generator from image, circuit diagram generator, schematic generator, generate circuit diagram from text, generate circuit diagram from image, ai schematic generator, circuit diagram maker"
   current="home"
   canonical="https://www.circuitdiagramgenerator.ai/"
   jsonLd={jsonLd}
@@ -83,13 +116,13 @@ const jsonLd = [
     <div class="wrap">
       <section class="cdg-hero">
         <div>
-          <span class="tag tag-accent cdg-tag-kicker">The AI Circuit Diagram Generator</span>
+          <span class="tag tag-accent cdg-tag-kicker">Circuit Diagram Generator</span>
           <h1 class="cdg-display">
-            <span class="line">Describe a circuit.</span>
-            <span class="line">Get an editable schematic.</span>
+            <span class="line">AI Circuit Diagram Generator</span>
+            <span class="line">from text or a photo.</span>
           </h1>
           <p class="cdg-sub">
-            Circuit Diagram Generator is the AI circuit diagram generator that turns an idea, or a photo of an existing diagram, into a clean schematic you can edit manually, refine with AI, simulate, and export — real parts, correct footprints, wired to spec.
+            The circuit diagram generator that turns a plain-English prompt — or a photo of a hand-drawn sketch — into a clean schematic you can edit, refine with AI, simulate, and export. Real parts, correct footprints, wired to spec.
           </p>
           <div class="cdg-row">
             <a href={app.signupBilling} class="btn btn-primary">Start Free Trial</a>
@@ -102,11 +135,11 @@ const jsonLd = [
         </div>
         <figure class="cdg-figure plate">
           <Placeholder
-            alt="AI circuit diagram generator output: a 555 timer LED blinker schematic"
+            alt="AI circuit diagram generator output: a 555 timer LED blinker schematic generated from text"
             label="Drop a screenshot of a generated schematic here"
             aspect="4 / 3"
           />
-          <figcaption>An AI-generated circuit diagram from the prompt: "555 timer LED blinker, 9V battery"</figcaption>
+          <figcaption>AI circuit diagram generator from text: "555 timer LED blinker, 9V battery"</figcaption>
         </figure>
       </section>
     </div>
@@ -121,8 +154,8 @@ const jsonLd = [
       <div class="cdg-steps">
         <div class="cdg-step">
           <p class="cdg-step-num">1</p>
-          <h3>Describe or sketch it</h3>
-          <p>Type a plain-English prompt, or upload a photo of a hand-drawn sketch — either is enough for the AI to start.</p>
+          <h3>Describe it in text, or upload an image</h3>
+          <p>Type a plain-English prompt, or upload a photo of a hand-drawn sketch — either is enough for the AI circuit diagram generator to start.</p>
         </div>
         <div class="cdg-step">
           <p class="cdg-step-num">2</p>
@@ -147,14 +180,14 @@ const jsonLd = [
           <span class="cdg-icon-badge" aria-hidden="true">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path><line x1="7" y1="8" x2="17" y2="8"></line><line x1="7" y1="12" x2="13" y2="12"></line></svg>
           </span>
-          <h3>Prompt-to-schematic</h3>
-          <p>Describe the circuit you want in plain language and get a complete schematic, not just a block diagram.</p>
+          <h3>AI circuit diagram generator from text</h3>
+          <p>Describe the circuit you want in plain language and get a complete schematic — not just a block diagram.</p>
         </div>
         <div class="card cdg-feature-card">
           <span class="cdg-icon-badge" aria-hidden="true">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6.3"></path><path d="m9 15 3-3a2 2 0 0 1 2.79.02L18 15"></path><circle cx="9" cy="9" r="2"></circle><path d="M16 19h6"></path><path d="M19 16v6"></path></svg>
           </span>
-          <h3>Sketch &amp; photo import</h3>
+          <h3>AI circuit diagram generator from image</h3>
           <p>Photograph a whiteboard or notebook sketch and the AI redraws it as a clean, labeled schematic.</p>
         </div>
         <div class="card cdg-feature-card">
@@ -192,26 +225,26 @@ const jsonLd = [
 
     <section class="cdg-section">
       <span class="cdg-kicker">See it in action</span>
-      <h2 class="cdg-h2">Built for classrooms, workbenches and product teams alike</h2>
+      <h2 class="cdg-h2">Circuit diagrams from prompts, sketches, and product ideas</h2>
       <div class="cdg-usecases">
         <figure class="cdg-usecase plate">
-          <Placeholder alt="LED blinker schematic screenshot" label="Screenshot: LED blinker schematic" />
+          <Placeholder alt="LED blinker schematic from AI circuit diagram generator from text" label="Screenshot: LED blinker schematic" />
           <figcaption>
-            <strong>555 timer LED blinker</strong>
+            <strong>From text: 555 timer LED blinker</strong>
             A teacher generates a labeled schematic from "blink an LED every second" for a lesson handout.
           </figcaption>
         </figure>
         <figure class="cdg-usecase plate">
-          <Placeholder alt="Common-emitter amplifier schematic screenshot" label="Screenshot: common-emitter amplifier schematic" />
+          <Placeholder alt="Amplifier schematic from AI circuit diagram generator from image" label="Screenshot: common-emitter amplifier schematic" />
           <figcaption>
-            <strong>Common-emitter amplifier</strong>
+            <strong>From image: common-emitter amplifier</strong>
             A hobbyist sketches an amplifier stage on paper and imports the photo straight into a working schematic.
           </figcaption>
         </figure>
         <figure class="cdg-usecase plate">
-          <Placeholder alt="Arduino temperature sensor schematic screenshot" label="Screenshot: Arduino temperature sensor schematic" />
+          <Placeholder alt="Arduino temperature sensor circuit diagram generator output" label="Screenshot: Arduino temperature sensor schematic" />
           <figcaption>
-            <strong>Arduino temperature sensor</strong>
+            <strong>From idea: Arduino temperature sensor</strong>
             An engineer describes a sensor node and simulates it before ordering parts.
           </figcaption>
         </figure>
@@ -285,7 +318,7 @@ const jsonLd = [
 
     <section class="cdg-section" id="faq">
       <span class="cdg-kicker">Questions</span>
-      <h2 class="cdg-h2">Frequently asked questions</h2>
+      <h2 class="cdg-h2">Frequently asked questions about our AI circuit diagram generator</h2>
       <div>
         {faq.map((item, i) => (
           <details class="cdg-faq-item" open={i === 0}>
@@ -303,9 +336,9 @@ const jsonLd = [
     <span class="cdg-ghost-numeral" aria-hidden="true">01</span>
     <div class="wrap">
       <section class="cdg-close">
-        <h2 class="cdg-h2">Your next schematic is a sentence away</h2>
+        <h2 class="cdg-h2">Your next circuit diagram is a sentence — or a photo — away</h2>
         <p class="cdg-sub">
-          Start a 7-day free trial on the AI circuit diagram generator built for students, teachers and engineers — describe a circuit, sketch one, or import a photo, and see it drafted, simulated and export-ready.
+          Start a 7-day free trial on the AI circuit diagram generator built for students, teachers and engineers. Generate from text, generate from image, simulate, and export when you're ready.
         </p>
         <div class="cdg-row">
           <a href={app.billing} class="btn btn-primary">Start Free Trial</a>

@@ -1,0 +1,11 @@
+/* TEAM */
+Site: Circuit Diagram Generator
+URL: https://www.circuitdiagramgenerator.ai
+App: https://app.circuitdiagramgenerator.ai
+
+/* SITE */
+Standards: HTML5, CSS3, Astro
+Components: AI circuit diagram generator from text and from image
+Keywords: ai circuit diagram generator, circuit diagram generator, schematic generator
+Last update: 2026-08-02
+Language: en

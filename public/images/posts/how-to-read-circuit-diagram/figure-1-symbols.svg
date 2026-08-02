@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 420" role="img" aria-labelledby="t1 d1">
+  <title id="t1">Common schematic symbols</title>
+  <desc id="d1">Chart of common circuit diagram symbols including resistor, capacitor, diode, LED, transistor, battery, ground, and switch.</desc>
+  <rect width="920" height="420" fill="#ffffff"/>
+  <text x="28" y="36" font-family="Georgia, serif" font-size="18" font-weight="700" fill="#050504">Common schematic symbols</text>
+
+  <!-- Resistor ANSI -->
+  <g transform="translate(40,70)">
+    <text x="70" y="0" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#2a2e2d">Resistor (ANSI)</text>
+    <line x1="0" y1="40" x2="20" y2="40" stroke="#050504" stroke-width="2"/>
+    <polyline points="20,40 30,20 40,60 50,20 60,60 70,20 80,60 90,40" fill="none" stroke="#050504" stroke-width="2"/>
+    <line x1="90" y1="40" x2="110" y2="40" stroke="#050504" stroke-width="2"/>
+    <text x="55" y="88" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#0f766e">R</text>
+  </g>
+
+  <!-- Resistor IEC -->
+  <g transform="translate(200,70)">
+    <text x="55" y="0" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#2a2e2d">Resistor (IEC)</text>
+    <line x1="0" y1="40" x2="20" y2="40" stroke="#050504" stroke-width="2"/>
+    <rect x="20" y="28" width="70" height="24" fill="none" stroke="#050504" stroke-width="2"/>
+    <line x1="90" y1="40" x2="110" y2="40" stroke="#050504" stroke-width="2"/>
+    <text x="55" y="88" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#0f766e">R</text>
+  </g>
+
+  <!-- Capacitor -->
+  <g transform="translate(360,70)">
+    <text x="40" y="0" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#2a2e2d">Capacitor</text>
+    <line x1="0" y1="40" x2="28" y2="40" stroke="#050504" stroke-width="2"/>
+    <line x1="28" y1="18" x2="28" y2="62" stroke="#050504" stroke-width="2.5"/>
+    <line x1="42" y1="18" x2="42" y2="62" stroke="#050504" stroke-width="2.5"/>
+    <line x1="42" y1="40" x2="70" y2="40" stroke="#050504" stroke-width="2"/>
+    <text x="35" y="88" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#0f766e">C</text>
+  </g>
+
+  <!-- Polarized capacitor -->
+  <g transform="translate(480,70)">
+    <text x="45" y="0" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#2a2e2d">Polarized cap</text>
+    <line x1="0" y1="40" x2="28" y2="40" stroke="#050504" stroke-width="2"/>
+    <line x1="28" y1="18" x2="28" y2="62" stroke="#050504" stroke-width="2.5"/>
+    <path d="M42,18 Q54,40 42,62" fill="none" stroke="#050504" stroke-width="2.5"/>
+    <line x1="42" y1="40" x2="70" y2="40" stroke="#050504" stroke-width="2"/>
+    <text x="18" y="14" font-family="Georgia, serif" font-size="14" fill="#0f766e">+</text>
+    <text x="35" y="88" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#0f766e">C</text>
+  </g>
+
+  <!-- Diode -->
+  <g transform="translate(600,70)">
+    <text x="40" y="0" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#2a2e2d">Diode</text>
+    <line x1="0" y1="40" x2="22" y2="40" stroke="#050504" stroke-width="2"/>
+    <polygon points="22,20 22,60 52,40" fill="none" stroke="#050504" stroke-width="2"/>
+    <line x1="52" y1="20" x2="52" y2="60" stroke="#050504" stroke-width="2.5"/>
+    <line x1="52" y1="40" x2="80" y2="40" stroke="#050504" stroke-width="2"/>
+    <text x="40" y="88" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#0f766e">D</text>
+  </g>
+
+  <!-- LED -->
+  <g transform="translate(740,70)">
+    <text x="45" y="0" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#2a2e2d">LED</text>
+    <line x1="0" y1="40" x2="22" y2="40" stroke="#050504" stroke-width="2"/>
+    <polygon points="22,20 22,60 52,40" fill="none" stroke="#050504" stroke-width="2"/>
+    <line x1="52" y1="20" x2="52" y2="60" stroke="#050504" stroke-width="2.5"/>
+    <line x1="52" y1="40" x2="80" y2="40" stroke="#050504" stroke-width="2"/>
+    <line x1="40" y1="14" x2="54" y2="0" stroke="#050504" stroke-width="1.5"/>
+    <polyline points="50,2 54,0 52,4" fill="none" stroke="#050504" stroke-width="1.5"/>
+    <line x1="48" y1="18" x2="62" y2="4" stroke="#050504" stroke-width="1.5"/>
+    <polyline points="58,6 62,4 60,8" fill="none" stroke="#050504" stroke-width="1.5"/>
+    <text x="40" y="88" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#0f766e">D / LED</text>
+  </g>
+
+  <!-- Transistor NPN -->
+  <g transform="translate(40,210)">
+    <text x="55" y="0" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#2a2e2d">Transistor (NPN)</text>
+    <circle cx="55" cy="50" r="28" fill="none" stroke="#050504" stroke-width="2"/>
+    <line x1="40" y1="30" x2="40" y2="70" stroke="#050504" stroke-width="2.5"/>
+    <line x1="0" y1="50" x2="40" y2="50" stroke="#050504" stroke-width="2"/>
+    <line x1="40" y1="38" x2="70" y2="18" stroke="#050504" stroke-width="2"/>
+    <line x1="70" y1="18" x2="70" y2="0" stroke="#050504" stroke-width="2"/>
+    <line x1="40" y1="62" x2="70" y2="82" stroke="#050504" stroke-width="2"/>
+    <line x1="70" y1="82" x2="70" y2="100" stroke="#050504" stroke-width="2"/>
+    <polygon points="58,72 66,80 54,78" fill="#050504"/>
+    <text x="10" y="46" font-family="Georgia, serif" font-size="11" fill="#2a2e2d">B</text>
+    <text x="74" y="8" font-family="Georgia, serif" font-size="11" fill="#2a2e2d">C</text>
+    <text x="74" y="98" font-family="Georgia, serif" font-size="11" fill="#2a2e2d">E</text>
+    <text x="55" y="124" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#0f766e">Q</text>
+  </g>
+
+  <!-- Battery -->
+  <g transform="translate(200,210)">
+    <text x="40" y="0" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#2a2e2d">Battery</text>
+    <line x1="40" y1="0" x2="40" y2="22" stroke="#050504" stroke-width="2"/>
+    <line x1="18" y1="22" x2="62" y2="22" stroke="#050504" stroke-width="2.5"/>
+    <line x1="28" y1="34" x2="52" y2="34" stroke="#050504" stroke-width="2"/>
+    <line x1="18" y1="46" x2="62" y2="46" stroke="#050504" stroke-width="2.5"/>
+    <line x1="28" y1="58" x2="52" y2="58" stroke="#050504" stroke-width="2"/>
+    <line x1="40" y1="58" x2="40" y2="80" stroke="#050504" stroke-width="2"/>
+    <text x="68" y="26" font-family="Georgia, serif" font-size="14" fill="#0f766e">+</text>
+    <text x="68" y="62" font-family="Georgia, serif" font-size="14" fill="#0f766e"></text>
+    <text x="40" y="108" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#0f766e">BT</text>
+  </g>
+
+  <!-- Ground -->
+  <g transform="translate(340,210)">
+    <text x="40" y="0" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#2a2e2d">Ground</text>
+    <line x1="40" y1="10" x2="40" y2="40" stroke="#050504" stroke-width="2"/>
+    <line x1="18" y1="40" x2="62" y2="40" stroke="#050504" stroke-width="2.5"/>
+    <line x1="24" y1="50" x2="56" y2="50" stroke="#050504" stroke-width="2"/>
+    <line x1="30" y1="60" x2="50" y2="60" stroke="#050504" stroke-width="2"/>
+    <text x="40" y="92" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#0f766e">GND</text>
+  </g>
+
+  <!-- Switch -->
+  <g transform="translate(460,210)">
+    <text x="55" y="0" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#2a2e2d">Switch</text>
+    <line x1="0" y1="45" x2="30" y2="45" stroke="#050504" stroke-width="2"/>
+    <circle cx="34" cy="45" r="4" fill="#ffffff" stroke="#050504" stroke-width="2"/>
+    <line x1="36" y1="42" x2="78" y2="22" stroke="#050504" stroke-width="2"/>
+    <circle cx="82" cy="45" r="4" fill="#ffffff" stroke="#050504" stroke-width="2"/>
+    <line x1="86" y1="45" x2="110" y2="45" stroke="#050504" stroke-width="2"/>
+    <text x="55" y="88" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#0f766e">SW</text>
+  </g>
+
+  <!-- Inductor -->
+  <g transform="translate(620,210)">
+    <text x="55" y="0" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#2a2e2d">Inductor</text>
+    <line x1="0" y1="45" x2="18" y2="45" stroke="#050504" stroke-width="2"/>
+    <path d="M18,45 a12,12 0 0 1 24,0 a12,12 0 0 1 24,0 a12,12 0 0 1 24,0 a12,12 0 0 1 24,0" fill="none" stroke="#050504" stroke-width="2"/>
+    <line x1="114" y1="45" x2="130" y2="45" stroke="#050504" stroke-width="2"/>
+    <text x="65" y="88" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#0f766e">L</text>
+  </g>
+
+  <!-- IC block -->
+  <g transform="translate(800,210)">
+    <text x="40" y="0" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#2a2e2d">IC / Chip</text>
+    <rect x="10" y="18" width="60" height="70" fill="none" stroke="#050504" stroke-width="2" rx="2"/>
+    <line x1="0" y1="34" x2="10" y2="34" stroke="#050504" stroke-width="2"/>
+    <line x1="0" y1="54" x2="10" y2="54" stroke="#050504" stroke-width="2"/>
+    <line x1="70" y1="34" x2="80" y2="34" stroke="#050504" stroke-width="2"/>
+    <line x1="70" y1="54" x2="80" y2="54" stroke="#050504" stroke-width="2"/>
+    <text x="40" y="58" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#050504">U1</text>
+    <text x="40" y="108" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#0f766e">U / IC</text>
+  </g>
+
+  <text x="28" y="390" font-family="Georgia, serif" font-size="12" fill="#555c5a">Zig-zag and rectangle resistors mean the same thing (ANSI vs IEC).</text>
+</svg>

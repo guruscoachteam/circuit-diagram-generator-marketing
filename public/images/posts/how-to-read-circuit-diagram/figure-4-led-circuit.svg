@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 280" role="img" aria-labelledby="t4 d4">
+  <title id="t4">Simple LED circuit schematic</title>
+  <desc id="d4">A 9 V battery drives an LED through a 470 ohm current-limiting resistor.</desc>
+  <rect width="640" height="280" fill="#ffffff"/>
+  <text x="320" y="28" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-weight="700" fill="#050504">9 V ’ resistor ’ LED ’ return</text>
+
+  <!-- Battery -->
+  <g transform="translate(70,90)">
+    <line x1="30" y1="0" x2="30" y2="20" stroke="#050504" stroke-width="2"/>
+    <line x1="10" y1="20" x2="50" y2="20" stroke="#050504" stroke-width="2.5"/>
+    <line x1="18" y1="32" x2="42" y2="32" stroke="#050504" stroke-width="2"/>
+    <line x1="10" y1="44" x2="50" y2="44" stroke="#050504" stroke-width="2.5"/>
+    <line x1="18" y1="56" x2="42" y2="56" stroke="#050504" stroke-width="2"/>
+    <line x1="30" y1="56" x2="30" y2="110" stroke="#050504" stroke-width="2"/>
+    <text x="58" y="24" font-family="Georgia, serif" font-size="14" fill="#0f766e">+</text>
+    <text x="30" y="-8" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#0f766e">BT1</text>
+    <text x="30" y="128" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#555c5a">9 V</text>
+  </g>
+
+  <!-- Top wire to resistor -->
+  <line x1="100" y1="90" x2="220" y2="90" stroke="#050504" stroke-width="2"/>
+
+  <!-- Resistor -->
+  <g transform="translate(220,78)">
+    <rect x="0" y="0" width="90" height="24" fill="none" stroke="#050504" stroke-width="2"/>
+    <text x="45" y="-10" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#0f766e">R1</text>
+    <text x="45" y="44" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#555c5a">470 ©</text>
+  </g>
+
+  <line x1="310" y1="90" x2="400" y2="90" stroke="#050504" stroke-width="2"/>
+
+  <!-- LED -->
+  <g transform="translate(400,70)">
+    <line x1="0" y1="20" x2="18" y2="20" stroke="#050504" stroke-width="2"/>
+    <polygon points="18,0 18,40 48,20" fill="none" stroke="#050504" stroke-width="2"/>
+    <line x1="48" y1="0" x2="48" y2="40" stroke="#050504" stroke-width="2.5"/>
+    <line x1="48" y1="20" x2="70" y2="20" stroke="#050504" stroke-width="2"/>
+    <line x1="36" y1="-6" x2="50" y2="-20" stroke="#050504" stroke-width="1.5"/>
+    <polyline points="46,-18 50,-20 48,-16" fill="none" stroke="#050504" stroke-width="1.5"/>
+    <line x1="44" y1="-2" x2="58" y2="-16" stroke="#050504" stroke-width="1.5"/>
+    <polyline points="54,-14 58,-16 56,-12" fill="none" stroke="#050504" stroke-width="1.5"/>
+    <text x="34" y="-28" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#0f766e">D1</text>
+    <text x="34" y="60" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#555c5a">LED</text>
+  </g>
+
+  <!-- Right vertical down and bottom return -->
+  <line x1="470" y1="90" x2="520" y2="90" stroke="#050504" stroke-width="2"/>
+  <line x1="520" y1="90" x2="520" y2="200" stroke="#050504" stroke-width="2"/>
+  <line x1="100" y1="200" x2="520" y2="200" stroke="#050504" stroke-width="2"/>
+
+  <!-- Current flow note -->
+  <text x="320" y="250" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#2a2e2d">Current leaves +, through R1 and LED, returns to </text>
+</svg>

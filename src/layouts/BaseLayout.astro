@@ -9,17 +9,41 @@ interface Props {
   description: string;
   current?: 'home' | 'pricing' | 'blog' | 'privacy' | 'terms';
   canonical?: string;
+  ogType?: string;
+  ogImage?: string;
+  keywords?: string;
+  noindex?: boolean;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   homeAnchors?: boolean;
 }
 
-const { title, description, current, canonical, jsonLd, homeAnchors = false } = Astro.props;
+const {
+  title,
+  description,
+  current,
+  canonical,
+  ogType,
+  ogImage,
+  keywords,
+  noindex,
+  jsonLd,
+  homeAnchors = false,
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <SEO title={title} description={description} canonical={canonical} jsonLd={jsonLd} />
+    <SEO
+      title={title}
+      description={description}
+      canonical={canonical}
+      ogType={ogType}
+      ogImage={ogImage}
+      keywords={keywords}
+      noindex={noindex}
+      jsonLd={jsonLd}
+    />
   </head>
   <body>
     <Nav current={current} />

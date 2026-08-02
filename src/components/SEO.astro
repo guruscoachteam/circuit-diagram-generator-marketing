@@ -4,33 +4,66 @@ interface Props {
   description: string;
   canonical?: string;
   ogType?: string;
+  ogImage?: string;
+  keywords?: string;
+  noindex?: boolean;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
+
+const SITE = 'https://www.circuitdiagramgenerator.ai';
+const DEFAULT_OG_IMAGE = `${SITE}/og-image.jpg`;
+const DEFAULT_KEYWORDS =
+  'ai circuit diagram generator, ai circuit diagram generator from text, ai circuit diagram generator from image, circuit diagram generator, schematic generator, generate circuit diagram from text, generate circuit diagram from image, ai schematic generator, circuit diagram maker, electronics schematic ai';
+
 const {
   title,
   description,
-  canonical = Astro.url.pathname === '/' ? 'https://www.circuitdiagramgenerator.ai/' : `https://www.circuitdiagramgenerator.ai${Astro.url.pathname.replace(/\/$/, '')}`,
+  canonical = Astro.url.pathname === '/'
+    ? `${SITE}/`
+    : `${SITE}${Astro.url.pathname.replace(/\/$/, '')}`,
   ogType = 'website',
+  ogImage = DEFAULT_OG_IMAGE,
+  keywords = DEFAULT_KEYWORDS,
+  noindex = false,
   jsonLd,
 } = Astro.props;
 
 const schemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+const robotsContent = noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
 ---
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{title}</title>
 <meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
+<meta name="robots" content={robotsContent} />
+<meta name="googlebot" content={robotsContent} />
+<meta name="author" content="Circuit Diagram Generator" />
+<meta name="theme-color" content="#0f766e" />
 <link rel="canonical" href={canonical} />
+<link rel="alternate" type="text/plain" href="/llms.txt" title="LLM information" />
+
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:type" content={ogType} />
 <meta property="og:url" content={canonical} />
 <meta property="og:site_name" content="Circuit Diagram Generator" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="AI Circuit Diagram Generator — from text or image to editable schematic" />
+
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+<meta name="twitter:image:alt" content="AI Circuit Diagram Generator — from text or image to editable schematic" />
+
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/favicon.svg" />
+<link rel="author" href="/humans.txt" />
 {schemas.map((schema) => (
   <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 ))}

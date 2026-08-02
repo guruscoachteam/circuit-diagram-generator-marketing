@@ -1,0 +1,50 @@
+# Circuit Diagram Generator
+
+> AI circuit diagram generator that turns plain-English text prompts or photos of hand-drawn sketches into clean, editable, simulation-ready circuit schematics.
+
+Circuit Diagram Generator (circuitdiagramgenerator.ai) is a web app for students, teachers, hobbyists, and engineers. Describe a circuit in natural language, or upload an image of a sketch or existing diagram, and the AI drafts a standards-correct schematic with real components and footprints. Edit manually or by chat, simulate before you build, and export to KiCad, Eagle, PDF, or SVG.
+
+## Primary product
+
+- Home: https://www.circuitdiagramgenerator.ai/
+- App (sign in / generate): https://app.circuitdiagramgenerator.ai/
+- Pricing: https://www.circuitdiagramgenerator.ai/pricing
+- Blog: https://www.circuitdiagramgenerator.ai/blog
+
+## What it does
+
+- AI circuit diagram generator from text — type a prompt like "555 timer LED blinker, 9V battery" and get a full schematic
+- AI circuit diagram generator from image — upload a photo of a whiteboard or notebook sketch and get a redrawn, labeled schematic
+- Circuit diagram generator with built-in simulation to verify behavior before ordering parts
+- Real component library with accurate pinouts and footprints (not generic symbols only)
+- Manual editing plus AI-assisted revisions without breaking reviewed work
+- Engineering exports: KiCad, Eagle, PDF, SVG
+
+## Plans
+
+- Starter — $19/mo — 100 AI credits, 1 seat
+- Pro — $49/mo — 300 AI credits, up to 3 seats
+- Studio — $99/mo — 750 AI credits, up to 10 seats
+- Every plan includes a 7-day free trial
+
+## Target keywords / topics this site covers
+
+- ai circuit diagram generator
+- ai circuit diagram generator from text
+- ai circuit diagram generator from image
+- circuit diagram generator
+- schematic generator
+- generate circuit diagram from text
+- generate circuit diagram from image / photo / sketch
+- AI schematic design for education and engineering
+
+## Legal
+
+- Privacy Policy: https://www.circuitdiagramgenerator.ai/privacy
+- Terms of Service: https://www.circuitdiagramgenerator.ai/terms
+
+## Optional
+
+- Sitemap: https://www.circuitdiagramgenerator.ai/sitemap-index.xml
+- Alternate sitemap: https://www.circuitdiagramgenerator.ai/sitemap.xml
+- Full LLM context: https://www.circuitdiagramgenerator.ai/llms-full.txt
