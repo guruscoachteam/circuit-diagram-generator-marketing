@@ -8,7 +8,14 @@ const { current } = Astro.props;
 ---
 
 <nav class="nav cdg-nav" id="site-nav">
-  <a href="/" class="nav-brand">Circuit Diagram Generator</a>
+  <a href="/" class="nav-brand">
+    <svg class="brand-mark" width="24" height="24" viewBox="0 0 30 30" aria-hidden="true">
+      <circle cx="7" cy="7" r="4" fill="none" stroke="currentColor" stroke-width="2.5"></circle>
+      <circle cx="23" cy="23" r="4" fill="none" stroke="currentColor" stroke-width="2.5"></circle>
+      <line x1="10" y1="10" x2="20" y2="20" stroke="currentColor" stroke-width="2.5"></line>
+    </svg>
+    Circuit Diagram Generator
+  </a>
   <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" id="nav-toggle">
     Menu
   </button>
@@ -19,7 +26,7 @@ const { current } = Astro.props;
     <a href="/blog" aria-current={current === 'blog' ? 'page' : undefined}>Blog</a>
     <a href={current === 'home' ? '#faq' : '/#faq'}>FAQ</a>
     <a href={app.home}>Open studio</a>
-    <a href={app.billing} class="btn btn-primary">Start Free Trial</a>
+    <a href={app.billing} class="btn btn-ink btn-sm">Start free trial</a>
   </div>
 </nav>
 

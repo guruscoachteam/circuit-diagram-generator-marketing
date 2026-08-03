@@ -1,0 +1,126 @@
+---
+interface Props {
+  title?: string;
+  desc?: string;
+}
+const {
+  title = 'Common-emitter amplifier schematic',
+  desc = 'A 2N3904 NPN transistor in a common-emitter stage, biased by a resistive divider, with input and output coupling capacitors and a bypassed emitter resistor.',
+} = Astro.props;
+const uid = 'schamp';
+---
+
+<svg class="schem" viewBox="0 0 680 380" role="img" aria-labelledby={`${uid}-t ${uid}-d`}>
+  <title id={`${uid}-t`}>{title}</title>
+  <desc id={`${uid}-d`}>{desc}</desc>
+
+  <g class="wire">
+    <!-- rails -->
+    <line x1="72" y1="52" x2="608" y2="52" />
+    <line x1="72" y1="332" x2="608" y2="332" />
+
+    <!-- bias divider -->
+    <line x1="250" y1="52" x2="250" y2="96" />
+    <line x1="250" y1="144" x2="250" y2="214" />
+    <line x1="250" y1="262" x2="250" y2="332" />
+
+    <!-- input path -->
+    <line x1="112" y1="190" x2="196" y2="190" />
+    <line x1="206" y1="190" x2="318" y2="190" />
+
+    <!-- collector column -->
+    <line x1="372" y1="52" x2="372" y2="72" />
+    <line x1="372" y1="120" x2="372" y2="155" />
+
+    <!-- emitter column -->
+    <line x1="372" y1="225" x2="372" y2="262" />
+    <line x1="372" y1="310" x2="372" y2="332" />
+
+    <!-- output path -->
+    <line x1="372" y1="140" x2="482" y2="140" />
+    <line x1="492" y1="140" x2="566" y2="140" />
+
+    <!-- emitter bypass -->
+    <line x1="372" y1="262" x2="446" y2="262" />
+    <line x1="446" y1="262" x2="446" y2="278" />
+    <line x1="446" y1="288" x2="446" y2="332" />
+  </g>
+
+  <!-- resistors -->
+  <g class="sym">
+    <rect x="238" y="96" width="24" height="48" rx="1" />
+    <rect x="238" y="214" width="24" height="48" rx="1" />
+    <rect x="360" y="72" width="24" height="48" rx="1" />
+    <rect x="360" y="262" width="24" height="48" rx="1" />
+  </g>
+
+  <!-- capacitors -->
+  <g class="sym">
+    <line x1="196" y1="174" x2="196" y2="206" />
+    <line x1="206" y1="174" x2="206" y2="206" />
+    <line x1="482" y1="124" x2="482" y2="156" />
+    <line x1="492" y1="124" x2="492" y2="156" />
+    <line x1="428" y1="278" x2="464" y2="278" />
+    <line x1="428" y1="288" x2="464" y2="288" />
+  </g>
+
+  <!-- transistor -->
+  <circle class="body" cx="360" cy="190" r="42" />
+  <g class="sym">
+    <line x1="340" y1="163" x2="340" y2="217" />
+    <line x1="340" y1="177" x2="374" y2="155" />
+    <line x1="340" y1="203" x2="374" y2="225" />
+    <path class="fill" d="M374 225 l-13 -2.5 l4 -8.5 Z" />
+  </g>
+
+  <!-- ground -->
+  <g class="sym">
+    <line x1="536" y1="332" x2="536" y2="344" />
+    <line x1="523" y1="344" x2="549" y2="344" />
+    <line x1="527" y1="350" x2="545" y2="350" />
+    <line x1="532" y1="356" x2="540" y2="356" />
+  </g>
+
+  <!-- signal arrows -->
+  <g class="sym">
+    <path class="fill" d="M132 190 l-14 -5 l0 10 Z" />
+    <path class="fill" d="M578 140 l-14 -5 l0 10 Z" />
+  </g>
+
+  <g class="dot">
+    <circle cx="250" cy="52" r="3.4" />
+    <circle cx="372" cy="52" r="3.4" />
+    <circle cx="250" cy="190" r="3.4" />
+    <circle cx="372" cy="140" r="3.4" />
+    <circle cx="372" cy="262" r="3.4" />
+    <circle cx="250" cy="332" r="3.4" />
+    <circle cx="372" cy="332" r="3.4" />
+    <circle cx="446" cy="332" r="3.4" />
+    <circle cx="536" cy="332" r="3.4" />
+  </g>
+
+  <g class="ref">
+    <text x="274" y="114">R1</text>
+    <text x="274" y="232">R2</text>
+    <text x="396" y="90">RC</text>
+    <text x="396" y="280">RE</text>
+    <text x="172" y="152">C1</text>
+    <text x="478" y="102">C2</text>
+    <text x="472" y="276">C3</text>
+    <text x="406" y="164">Q1</text>
+  </g>
+  <g class="val">
+    <text x="274" y="132">47 kΩ</text>
+    <text x="274" y="250">10 kΩ</text>
+    <text x="396" y="108">4.7 kΩ</text>
+    <text x="396" y="298">1 kΩ</text>
+    <text x="172" y="168">10 µF</text>
+    <text x="478" y="118">10 µF</text>
+    <text x="472" y="294">100 µF</text>
+    <text x="406" y="182">2N3904</text>
+    <text x="72" y="40">+9 V</text>
+    <text x="72" y="356">GND</text>
+    <text x="112" y="212">IN</text>
+    <text x="566" y="164" text-anchor="end">OUT</text>
+  </g>
+</svg>

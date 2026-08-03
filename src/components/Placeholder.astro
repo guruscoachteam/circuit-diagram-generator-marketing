@@ -16,18 +16,22 @@ const { label = 'Screenshot coming soon', alt, aspect = '4 / 3' } = Astro.props;
     width: 100%;
     display: grid;
     place-items: center;
-    background:
-      linear-gradient(145deg, #fff8ee, #f0ebe4 55%, #e8e2d8);
+    background-color: var(--color-bg-deep);
+    background-image:
+      linear-gradient(var(--color-hair) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-hair) 1px, transparent 1px);
+    background-size: var(--grid) var(--grid);
     color: var(--color-text-muted);
-    font-family: var(--font-heading);
-    font-size: 16px;
-    font-weight: 600;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
     text-align: center;
     padding: var(--space-4);
     min-height: 200px;
   }
   .placeholder-label {
-    max-width: 28ch;
-    line-height: 1.4;
+    max-width: 30ch;
+    line-height: 1.6;
   }
 </style>

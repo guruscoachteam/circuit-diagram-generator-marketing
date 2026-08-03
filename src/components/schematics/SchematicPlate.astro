@@ -1,0 +1,21 @@
+---
+interface Props {
+  label: string;
+  meta?: string;
+  caption?: string;
+  tone?: 'paper' | 'plain';
+  wide?: boolean;
+}
+const { label, meta, caption, tone = 'paper', wide = false } = Astro.props;
+---
+
+<figure class={`sch-plate${wide ? ' is-wide' : ''}`}>
+  <div class="sch-plate-bar">
+    <span class="sch-plate-label">{label}</span>
+    {meta && <span class="sch-plate-meta">{meta}</span>}
+  </div>
+  <div class={`sch-plate-body ${tone === 'paper' ? 'paper' : ''}`}>
+    <slot />
+  </div>
+  {caption && <figcaption class="sch-plate-caption" set:html={caption} />}
+</figure>
