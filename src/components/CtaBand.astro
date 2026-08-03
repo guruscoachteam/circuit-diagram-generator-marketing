@@ -1,0 +1,46 @@
+---
+import { app } from '../lib/app';
+
+interface Props {
+  kicker?: string;
+  title: string;
+  sub: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+  note?: boolean;
+}
+
+const {
+  kicker = 'Start drawing',
+  title,
+  sub,
+  primaryLabel = 'Start free trial →',
+  primaryHref = app.billing,
+  secondaryLabel = 'Open the studio',
+  secondaryHref = app.home,
+  note = true,
+} = Astro.props;
+---
+
+<div class="cdg-band cdg-dark-band">
+  <div class="wrap">
+    <section class="cdg-close">
+      <p class="rule-kicker">{kicker}</p>
+      <h2 class="cdg-h2" set:html={title} />
+      <p class="cdg-sub">{sub}</p>
+      <div class="cdg-row">
+        <a href={primaryHref} class="btn btn-primary">{primaryLabel}</a>
+        {secondaryLabel && (
+          <a href={secondaryHref} class="btn btn-secondary">{secondaryLabel}</a>
+        )}
+      </div>
+      {note && (
+        <p class="cdg-note cdg-close-note">
+          <a href={app.login}>Already have an account?</a>
+        </p>
+      )}
+    </section>
+  </div>
+</div>

@@ -2,6 +2,7 @@
 export const prerender = true;
 import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import CtaBand from '../../components/CtaBand.astro';
 import { app } from '../../lib/app';
 import { formatPostDate, getPublishedPosts, postPath } from '../../lib/blog';
 import '../../styles/pages.css';
@@ -85,17 +86,15 @@ const jsonLd = {
       </div>
     </div>
 
-    <div class="cdg-band post-cta-band">
-      <div class="post-inner">
-        <section class="post-cta">
-          <h2>Try it on your next circuit</h2>
-          <p>Describe a circuit or upload a sketch — get an editable schematic in minutes.</p>
-          <div class="post-cta-actions">
-            <a href={app.signupBilling} class="btn btn-primary">Start Free Trial</a>
-            <a href="/blog" class="btn btn-secondary">More articles</a>
-          </div>
-        </section>
-      </div>
-    </div>
   </article>
+
+  <CtaBand
+    kicker="From reading to drawing"
+    title="Try it on your <em>next</em> circuit"
+    sub="Describe a circuit or upload a sketch and get an editable, simulation-ready schematic in minutes."
+    primaryLabel="Start free trial →"
+    primaryHref={app.signupBilling}
+    secondaryLabel="More articles"
+    secondaryHref="/blog"
+  />
 </BaseLayout>

@@ -7,6 +7,7 @@ import Schematic555 from '../components/schematics/Schematic555.astro';
 import SchematicAmp from '../components/schematics/SchematicAmp.astro';
 import SchematicSensor from '../components/schematics/SchematicSensor.astro';
 import SchematicPlate from '../components/schematics/SchematicPlate.astro';
+import CtaBand from '../components/CtaBand.astro';
 import { app } from '../lib/app';
 import '../styles/pages.css';
 
@@ -409,26 +410,10 @@ const features = [
     </section>
   </div>
 
-  <div class="cdg-band cdg-dark-band">
-    <div class="wrap">
-      <section class="cdg-close">
-        <p class="rule-kicker">Start drawing</p>
-        <h2 class="cdg-h2">Your next circuit is a <em>sentence</em> away</h2>
-        <p class="cdg-sub">
-          Start a 7-day free trial on the AI circuit diagram generator built for students,
-          teachers and engineers. Generate from text or from a photo, simulate, and export
-          when you're ready.
-        </p>
-        <div class="cdg-row">
-          <a href={app.billing} class="btn btn-primary">Start free trial →</a>
-          <a href={app.home} class="btn btn-secondary">Open the studio</a>
-        </div>
-        <p class="cdg-note cdg-close-note">
-          <a href={app.login}>Already have an account?</a>
-        </p>
-      </section>
-    </div>
-  </div>
+  <CtaBand
+    title="Your next circuit is a <em>sentence</em> away"
+    sub="Start a 7-day free trial on the AI circuit diagram generator built for students, teachers and engineers. Generate from text or from a photo, simulate, and export when you're ready."
+  />
 </BaseLayout>
 
 <script>
