@@ -2,11 +2,17 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 
 export type Post = CollectionEntry<'posts'>;
 
-/** Public posts only (drafts hidden). Sorted newest first. */
+/**
+ * Public posts, newest first.
+ *
+ * Drafts are visible in `astro dev` and hidden in every build, so a draft can
+ * be reviewed at its real URL before going live but can never reach the
+ * deployed site. `import.meta.env.DEV` is true only under the dev server.
+ */
 export async function getPublishedPosts(): Promise<Post[]> {
   const posts = await getCollection('posts');
   return posts
-    .filter((post) => !post.data.draft)
+    .filter((post) => import.meta.env.DEV || !post.data.draft)
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 }
 
