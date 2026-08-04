@@ -32,6 +32,10 @@ Users photograph a whiteboard, notebook page, or printed diagram. The AI redraws
 
 ### Simulation
 Every plan includes built-in simulation so wiring or logic issues can be caught before parts are ordered or boards etched.
+Positioned as an "AI circuit simulator": unlike a traditional simulator, the circuit does not have to be drawn first — it is
+generated from a text prompt or a photo of a sketch, and can then be simulated, edited, and re-run. Simulation is presented as
+a first check rather than a replacement for engineering judgment or bench measurement. Dedicated page:
+https://www.circuitdiagramgenerator.ai/simulator
 
 ### Component library
 Parts are selected from a library of real components with accurate pinouts and footprints.
@@ -58,6 +62,7 @@ All plans include a 7-day free trial. A card is required to start the trial; can
 ## Key pages
 
 - https://www.circuitdiagramgenerator.ai/ — product landing page
+- https://www.circuitdiagramgenerator.ai/simulator — AI circuit simulator (simulate from text or a photo)
 - https://www.circuitdiagramgenerator.ai/pricing — plan comparison
 - https://www.circuitdiagramgenerator.ai/blog — guides and tutorials
 - https://www.circuitdiagramgenerator.ai/privacy — privacy policy

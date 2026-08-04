@@ -1,0 +1,481 @@
+---
+export const prerender = true;
+import BaseLayout from '../layouts/BaseLayout.astro';
+import IconCheck from '../components/IconCheck.astro';
+import IconPlus from '../components/IconPlus.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Schematic555 from '../components/schematics/Schematic555.astro';
+import SchematicAmp from '../components/schematics/SchematicAmp.astro';
+import SchematicSensor from '../components/schematics/SchematicSensor.astro';
+import SchematicPlate from '../components/schematics/SchematicPlate.astro';
+import Waveform from '../components/schematics/Waveform.astro';
+import { app } from '../lib/app';
+import '../styles/pages.css';
+
+const faq = [
+  {
+    q: 'What is an AI circuit simulator?',
+    a: 'An AI circuit simulator builds the circuit for you and then runs it. Instead of placing every part and wire by hand before you can press play, you describe the circuit in plain English — or upload a photo of a sketch — and the AI drafts a real schematic with actual components, which you can then simulate and edit.',
+  },
+  {
+    q: 'Can I simulate a circuit from a text description?',
+    a: 'Yes. Type something like "555 timer that blinks an LED once per second from a 9V battery" and you get a complete schematic with real parts and values, ready to simulate. You never have to draw it first.',
+  },
+  {
+    q: 'Can I simulate a circuit from a photo or a sketch?',
+    a: 'Yes. Photograph a whiteboard or a page from your notebook and the AI redraws it as a clean, labeled schematic. From there it behaves exactly like a circuit you described in text — editable, simulatable and exportable.',
+  },
+  {
+    q: 'Do I need to know how to set up a simulation?',
+    a: 'No. There is no netlist to write and no simulation profile to configure before you see a result — the circuit arrives ready to run, so you can spend your time on the design rather than the tooling.',
+  },
+  {
+    q: 'What can I catch by simulating before I build?',
+    a: 'The common, expensive mistakes: a timing network that gives the wrong rate, a resistor that lets far too much current through an LED, a bias network that puts a transistor in the wrong region, or a wire that never actually connects. All of them are free to fix on screen and tedious to fix on a breadboard.',
+  },
+  {
+    q: 'Can I edit the circuit and simulate it again?',
+    a: 'Yes. Change values or wiring by hand, or ask the AI for a change in chat, then run it again. Edits and re-runs do not cost you a redraw.',
+  },
+  {
+    q: 'Does simulation replace testing on the bench?',
+    a: 'No, and you should not treat it as a substitute. Simulation catches design and wiring mistakes early, but every AI-generated circuit still needs your engineering judgment — and real measurement — before you build anything that matters or anything involving mains power.',
+  },
+  {
+    q: 'Is there a free trial?',
+    a: 'Every plan starts with a 7-day free trial and includes simulation. A card is required to start the trial, and you can cancel anytime before it ends.',
+  },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'AI Circuit Simulator',
+    url: 'https://www.circuitdiagramgenerator.ai/simulator',
+    description:
+      'AI circuit simulator that drafts the schematic from a text prompt or a photo, then simulates it so you can check behaviour before you build.',
+    isPartOf: {
+      '@type': 'WebSite',
+      name: 'Circuit Diagram Generator',
+      url: 'https://www.circuitdiagramgenerator.ai',
+    },
+    primaryImageOfPage: {
+      '@type': 'ImageObject',
+      url: 'https://www.circuitdiagramgenerator.ai/og-image.jpg',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Circuit Diagram Generator — AI Circuit Simulator',
+    alternateName: ['AI Circuit Simulator', 'Online AI Circuit Simulator'],
+    applicationCategory: 'DesignApplication',
+    applicationSubCategory: 'Circuit Simulation',
+    operatingSystem: 'Web',
+    url: 'https://www.circuitdiagramgenerator.ai/simulator',
+    description:
+      'Online AI circuit simulator: describe a circuit in plain English or upload a sketch, get an editable schematic with real components, and simulate it before you build.',
+    featureList: [
+      'AI circuit simulator from a text prompt',
+      'AI circuit simulator from a photo or sketch',
+      'Simulate before building on a breadboard',
+      'Real component library with accurate pinouts',
+      'Manual and AI-assisted edits, then re-run',
+      'Export to KiCad, Eagle, PDF, SVG',
+    ],
+    offers: [
+      { '@type': 'Offer', name: 'Starter', price: '19', priceCurrency: 'USD' },
+      { '@type': 'Offer', name: 'Pro', price: '49', priceCurrency: 'USD' },
+      { '@type': 'Offer', name: 'Studio', price: '99', priceCurrency: 'USD' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a },
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://www.circuitdiagramgenerator.ai/',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'AI Circuit Simulator',
+        item: 'https://www.circuitdiagramgenerator.ai/simulator',
+      },
+    ],
+  },
+];
+
+const specs = [
+  { k: 'Start from', v: 'Text, photo or JSON' },
+  { k: 'Setup', v: 'None to write' },
+  { k: 'Check', v: 'Before you build' },
+  { k: 'Then', v: 'Edit and run again' },
+];
+
+const catches = [
+  {
+    h: 'Timing that comes out wrong',
+    p: 'A blinker meant for one flash a second that actually runs at four. Watch the output swing and read the period off the plot instead of counting flashes on a breadboard.',
+  },
+  {
+    h: 'Currents that cook a part',
+    p: 'A current-limiting resistor an order of magnitude too small will show up as a current no LED survives — before you solder it in.',
+  },
+  {
+    h: 'Bias points in the wrong place',
+    p: 'An amplifier whose divider pins the transistor into saturation or cutoff clips or flatlines on screen, where the fix costs one number.',
+  },
+  {
+    h: 'Wires that never connect',
+    p: 'A node that looks joined but is not behaves very differently in simulation than the circuit you intended — a dead branch is obvious immediately.',
+  },
+  {
+    h: 'A supply that cannot keep up',
+    p: 'A rail that sags the moment the load switches on tells you the problem is the supply, not the part you were about to replace.',
+  },
+  {
+    h: 'Values that only look right',
+    p: 'A filter that rolls off an octave away from where you wanted it, or a divider that lands just outside the range your input expects, is a one-number fix on screen.',
+  },
+];
+// Keep this list at six so the hairline grid fills evenly at 3, 2 and 1 columns.
+---
+
+<BaseLayout
+  title="AI Circuit Simulator — Simulate a Circuit from Text or a Photo"
+  description="AI circuit simulator: describe a circuit in plain English or upload a sketch, get a real schematic, and simulate it before you build. 7-day free trial."
+  keywords="ai circuit simulator, ai circuit simulator online, online circuit simulator, simulate circuit from text, ai circuit simulation, circuit simulator from image, ai electronics simulator, simulate circuit before building, free ai circuit simulator"
+  current="simulator"
+  canonical="https://www.circuitdiagramgenerator.ai/simulator"
+  jsonLd={jsonLd}
+>
+  <div class="cdg-band cdg-hero-band paper">
+    <div class="wrap">
+      <section class="cdg-hero">
+        <p class="rule-kicker">AI circuit simulator</p>
+        <h1 class="cdg-display">
+          <span class="line">The AI circuit simulator</span>{' '}
+          <span class="line">that <em>draws</em> the circuit too.</span>
+        </h1>
+        <p class="cdg-sub">
+          Most simulators make you place every part before you can press play. Here you
+          describe the circuit — or photograph a sketch of it — and the AI drafts a real
+          schematic with real components, ready to run.
+        </p>
+        <div class="cdg-row">
+          <a href={app.signupBilling} class="btn btn-primary">Start free trial →</a>
+          <a href="#how-it-works" class="btn btn-secondary">See how it works</a>
+        </div>
+        <p class="cdg-note">
+          7-day trial on every plan · simulation included ·
+          <a href={app.login}>Already have an account?</a>
+        </p>
+
+        <div class="cdg-console">
+          <ul class="console-tabs">
+            <li class="console-tab is-active"><i>01</i>Describe</li>
+            <li class="console-tab"><i>02</i>Upload diagram</li>
+            <li class="console-tab"><i>03</i>Import JSON</li>
+            <li class="console-tab"><i>04</i>Start blank</li>
+          </ul>
+          <div class="console-body">
+            <div class="console-prompt">
+              <p class="console-q">What would you like to simulate?</p>
+              <div class="console-input">
+                <span id="cdg-type">A 555 timer that blinks an LED once per second from a 9V battery.</span><span
+                  class="console-caret"
+                  aria-hidden="true"></span>
+              </div>
+              <p class="console-chip-label">Try an example</p>
+              <div class="console-chips">
+                <span class="console-chip">555 timer LED blinker</span>
+                <span class="console-chip">Common-emitter amplifier</span>
+                <span class="console-chip">RC low-pass filter</span>
+              </div>
+              <a href={app.signupBilling} class="btn btn-primary btn-block">Draft and simulate →</a>
+            </div>
+            <div class="console-output paper">
+              <div class="console-out-bar">
+                <span class="console-dot">Simulation complete</span>
+                <span>2 s window</span>
+              </div>
+              <div class="console-out-draw">
+                <Waveform />
+              </div>
+              <div class="console-out-foot">
+                <span>Blink rate 1.03 Hz</span>
+                <span>Swing 0 – 9 V</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="cdg-band cdg-spec-band">
+    <div class="wrap">
+      <dl class="cdg-spec">
+        {specs.map((s) => (
+          <div>
+            <dt>{s.k}</dt>
+            <dd>{s.v}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section class="cdg-section" id="how-it-works">
+      <div class="cdg-section-head">
+        <h2 class="cdg-h2">Describe it, draft it, <em>run</em> it</h2>
+        <p class="cdg-sub">
+          The gap between "I have an idea" and "I can see whether it works" is usually an
+          hour of drawing. This closes it to about a minute.
+        </p>
+      </div>
+      <div class="cdg-steps">
+        <div class="cdg-step">
+          <p class="cdg-step-num">Step 01</p>
+          <h3>Say what you want to test</h3>
+          <p>Type it in plain English, or upload a photo of a sketch. No netlist, no part placement, no library hunting first.</p>
+        </div>
+        <div class="cdg-step">
+          <p class="cdg-step-num">Step 02</p>
+          <h3>Get a real circuit, not a sketch</h3>
+          <p>The AI picks actual components with accurate pinouts and footprints and wires them to spec — that is what makes the result worth simulating.</p>
+        </div>
+        <div class="cdg-step">
+          <p class="cdg-step-num">Step 03</p>
+          <h3>Run it, change it, run it again</h3>
+          <p>Watch what the circuit does, adjust a value by hand or ask the AI for a change, and run it again before you touch a breadboard.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cdg-section" id="what-you-catch">
+      <div class="cdg-section-head">
+        <h2 class="cdg-h2">What a simulation catches while it's still <em>free</em></h2>
+        <p class="cdg-sub">
+          Every one of these costs minutes on screen and an afternoon with a multimeter.
+        </p>
+      </div>
+      <div class="cdg-features">
+        {catches.map((c) => (
+          <div class="cdg-feature">
+            <h3>{c.h}</h3>
+            <p>{c.p}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="cdg-section" id="example">
+      <div class="cdg-section-head">
+        <h2 class="cdg-h2">One prompt, one schematic, one <em>result</em></h2>
+        <p class="cdg-sub">
+          "Blink an LED once per second from a 9V battery" produces the circuit on the left
+          and the behaviour on the right. Both are editable; changing R2 moves the trace.
+        </p>
+      </div>
+      <div class="cdg-usecases is-stack">
+        <SchematicPlate
+          wide
+          label="The circuit · 555 astable"
+          meta="6 parts · 9 nets"
+          caption="<strong>The schematic it drafts</strong>Real parts with real values — a 1 kΩ and 68 kΩ pair with a 10 µF capacitor set the rate, and a 470 Ω resistor holds the LED current sensible."
+        >
+          <Schematic555 />
+        </SchematicPlate>
+        <SchematicPlate
+          wide
+          label="The result · output over time"
+          meta="2 s window · 1.03 Hz"
+          caption="<strong>What the simulation shows</strong>Pin 3 swinging the full rail about once a second, with the timing capacitor charging and discharging between a third and two thirds of the supply."
+        >
+          <Waveform />
+        </SchematicPlate>
+      </div>
+    </section>
+
+    <section class="cdg-section">
+      <div class="cdg-section-head">
+        <h2 class="cdg-h2">Bring it any circuit you'd <em>breadboard</em></h2>
+        <p class="cdg-sub">
+          Analogue stages, sensor front-ends, timing networks — the same loop of describe,
+          draft, simulate and refine applies to all of them.
+        </p>
+      </div>
+      <div class="cdg-usecases is-stack">
+        <SchematicPlate
+          wide
+          label="Analogue · CE amplifier"
+          meta="8 parts · 11 nets"
+          caption="<strong>Check the bias before you solder</strong>A divider that puts the transistor in the wrong region is obvious on screen and invisible on a breadboard until nothing amplifies."
+        >
+          <SchematicAmp />
+        </SchematicPlate>
+        <SchematicPlate
+          wide
+          label="Sensor node · TMP36 on A0"
+          meta="4 parts · 5 nets"
+          caption="<strong>Check the rails before you order</strong>Confirm the sensor sits on a clean supply and its output lands in the range your analogue input expects."
+        >
+          <SchematicSensor />
+        </SchematicPlate>
+      </div>
+    </section>
+
+    <section class="cdg-section">
+      <div class="cdg-section-head">
+        <h2 class="cdg-h2">Simulation is a <em>first</em> check, not the last one</h2>
+        <p class="cdg-sub">
+          Worth saying plainly, because plenty of tools imply otherwise.
+        </p>
+      </div>
+      <div class="cdg-plain-list">
+        <p>
+          An AI circuit simulator is very good at catching the mistakes that come from a slip
+          of arithmetic or a wire in the wrong place. It is not a substitute for your own
+          engineering judgment, for a datasheet, or for measuring the thing you actually
+          built. Treat a clean simulation as permission to order parts — not as proof that a
+          design is safe.
+        </p>
+        <p>
+          That goes double for anything involving mains voltage, battery packs at
+          appreciable current, or a circuit someone else will rely on. Simulate it, review
+          it, then test it on the bench.
+        </p>
+      </div>
+    </section>
+
+    <section class="cdg-section" id="pricing">
+      <div class="cdg-section-head">
+        <h2 class="cdg-h2">Simulation is on <em>every</em> plan</h2>
+        <p class="cdg-sub">
+          Credits are spent generating and revising circuits with AI. Editing, simulating
+          and re-running a circuit you already have never costs a credit.
+        </p>
+      </div>
+      <div class="cdg-pricing">
+        <div class="card cdg-plan">
+          <p class="card-kicker">Plan 01</p>
+          <p class="cdg-plan-price">$19<span> / mo</span></p>
+          <ul>
+            <li><IconCheck />100 AI credits / month</li>
+            <li><IconCheck />Unlimited simulation runs</li>
+            <li><IconCheck />7-day free trial</li>
+          </ul>
+          <a href={app.billing} class="btn btn-secondary btn-block">Start with Starter</a>
+        </div>
+        <div class="card cdg-plan cdg-featured">
+          <span class="tag tag-outline pr-badge">Most popular</span>
+          <p class="card-kicker">Plan 02</p>
+          <p class="cdg-plan-price">$49<span> / mo</span></p>
+          <ul>
+            <li><IconCheck />300 AI credits / month</li>
+            <li><IconCheck />Unlimited simulation runs</li>
+            <li><IconCheck />7-day free trial</li>
+          </ul>
+          <a href={app.billing} class="btn btn-primary btn-block">Start with Pro</a>
+        </div>
+        <div class="card cdg-plan">
+          <p class="card-kicker">Plan 03</p>
+          <p class="cdg-plan-price">$99<span> / mo</span></p>
+          <ul>
+            <li><IconCheck />750 AI credits / month</li>
+            <li><IconCheck />Unlimited simulation runs</li>
+            <li><IconCheck />7-day free trial</li>
+          </ul>
+          <a href={app.billing} class="btn btn-secondary btn-block">Start with Studio</a>
+        </div>
+      </div>
+      <p class="cdg-note is-plain">
+        Seat counts, overage rates and the full comparison live on the
+        {' '}<a href="/pricing">pricing page</a>.
+      </p>
+    </section>
+
+    <section class="cdg-section" id="faq">
+      <div class="cdg-section-head">
+        <h2 class="cdg-h2">AI circuit simulator <em>questions</em></h2>
+        <p class="cdg-sub">
+          If you are coming from a traditional simulator, the short version is: you skip the
+          drawing, and everything after that is familiar.
+        </p>
+      </div>
+      <div>
+        {faq.map((item, i) => (
+          <details class="cdg-faq-item" open={i === 0}>
+            <summary>{item.q}<IconPlus /></summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+      </div>
+      <p class="cdg-note is-plain">
+        Looking for the drawing side instead? See the
+        {' '}<a href="/">AI circuit diagram generator</a>, or read
+        {' '}<a href="/blog/how-to-read-circuit-diagram-schematic">how to read a schematic</a>.
+      </p>
+    </section>
+  </div>
+
+  <CtaBand
+    kicker="Run your first circuit"
+    title="Simulate it before you <em>build</em> it"
+    sub="Describe a circuit or upload a sketch, get a real schematic with real parts, and watch what it does — all inside the 7-day free trial."
+  />
+</BaseLayout>
+
+<script>
+  const el = document.getElementById('cdg-type');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (el && !reduced) {
+    const lines = [
+      'A 555 timer that blinks an LED once per second from a 9V battery.',
+      'Common-emitter amplifier around a 2N3904 — check the bias point.',
+      'RC low-pass filter rolling off above 1 kHz.',
+    ];
+
+    let line = 0;
+    let chars = 0;
+    let dir = 1;
+
+    el.textContent = '';
+
+    const tick = () => {
+      const full = lines[line];
+      chars += dir;
+      el.textContent = full.slice(0, chars);
+
+      let delay = dir > 0 ? 34 : 14;
+      if (dir > 0 && chars >= full.length) {
+        dir = -1;
+        delay = 2600;
+      } else if (dir < 0 && chars <= 0) {
+        dir = 1;
+        line = (line + 1) % lines.length;
+        delay = 420;
+      }
+      window.setTimeout(tick, delay);
+    };
+
+    window.setTimeout(tick, 700);
+  }
+</script>

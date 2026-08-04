@@ -128,6 +128,7 @@ const features = [
     h: 'Built-in simulation',
     p: 'Run the circuit before you build it and catch wiring or logic mistakes while they are still free to fix.',
     icon: 'wave',
+    link: { href: '/simulator', label: 'See the AI circuit simulator →' },
   },
   {
     h: 'Real component library',
@@ -161,7 +162,7 @@ const features = [
       <section class="cdg-hero">
         <p class="rule-kicker">AI circuit design studio</p>
         <h1 class="cdg-display">
-          <span class="line">AI circuit diagram generator</span>
+          <span class="line">AI circuit diagram generator</span>{' '}
           <span class="line">from text or a <em>photo</em>.</span>
         </h1>
         <p class="cdg-sub">
@@ -294,6 +295,11 @@ const features = [
             </span>
             <h3>{f.h}</h3>
             <p>{f.p}</p>
+            {f.link && (
+              <p class="cdg-feature-link">
+                <a href={f.link.href}>{f.link.label}</a>
+              </p>
+            )}
           </div>
         ))}
       </div>

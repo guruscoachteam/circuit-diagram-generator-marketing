@@ -1,0 +1,70 @@
+---
+interface Props {
+  title?: string;
+  desc?: string;
+}
+const {
+  title = 'Simulated output of a 555 LED blinker',
+  desc = 'A plot of two seconds of simulated output. The 555 output pin swings between 0 and 9 volts about once per second, while the timing capacitor charges and discharges between one third and two thirds of the supply.',
+} = Astro.props;
+const uid = 'scope555';
+---
+
+<svg class="scope" viewBox="0 0 680 380" role="img" aria-labelledby={`${uid}-t ${uid}-d`}>
+  <title id={`${uid}-t`}>{title}</title>
+  <desc id={`${uid}-d`}>{desc}</desc>
+
+  <!-- legend -->
+  <g class="lbl">
+    <line class="trace-a" x1="80" y1="40" x2="104" y2="40" />
+    <text class="lbl-a" x="112" y="44">V(OUT) · pin 3</text>
+    <line class="trace-b" x1="250" y1="40" x2="274" y2="40" />
+    <text class="lbl-b" x="282" y="44">V(C1) · timing cap</text>
+  </g>
+
+  <!-- plot grid -->
+  <g class="grid">
+    <line x1="150" y1="60" x2="150" y2="300" />
+    <line x1="220" y1="60" x2="220" y2="300" />
+    <line x1="290" y1="60" x2="290" y2="300" />
+    <line x1="360" y1="60" x2="360" y2="300" />
+    <line x1="430" y1="60" x2="430" y2="300" />
+    <line x1="500" y1="60" x2="500" y2="300" />
+    <line x1="570" y1="60" x2="570" y2="300" />
+    <line x1="80" y1="90" x2="640" y2="90" />
+    <line x1="80" y1="137" x2="640" y2="137" />
+    <line x1="80" y1="185" x2="640" y2="185" />
+    <line x1="80" y1="232" x2="640" y2="232" />
+  </g>
+
+  <!-- axes -->
+  <g class="axis">
+    <line x1="80" y1="60" x2="80" y2="300" />
+    <line x1="80" y1="280" x2="640" y2="280" />
+  </g>
+
+  <!-- traces -->
+  <path class="trace-b" d="M80 217 C128 180 176 158 226 153 C270 196 315 213 360 217 C408 180 456 158 506 153 C550 196 595 213 640 217" />
+  <path class="trace-a" d="M80 90 H226 V280 H360 V90 H506 V280 H640" />
+
+  <!-- scale labels -->
+  <g class="axis">
+    <text x="72" y="94" text-anchor="end">9 V</text>
+    <text x="72" y="157" text-anchor="end">6 V</text>
+    <text x="72" y="221" text-anchor="end">3 V</text>
+    <text x="72" y="284" text-anchor="end">0 V</text>
+    <text x="80" y="302" text-anchor="start">0</text>
+    <text x="220" y="302" text-anchor="middle">0.5 s</text>
+    <text x="360" y="302" text-anchor="middle">1.0 s</text>
+    <text x="500" y="302" text-anchor="middle">1.5 s</text>
+    <text x="640" y="302" text-anchor="end">2.0 s</text>
+  </g>
+
+  <!-- period marker -->
+  <g class="marker">
+    <line x1="80" y1="330" x2="360" y2="330" />
+    <line x1="80" y1="324" x2="80" y2="336" />
+    <line x1="360" y1="324" x2="360" y2="336" />
+    <text x="220" y="352" text-anchor="middle">one blink · 0.97 s</text>
+  </g>
+</svg>

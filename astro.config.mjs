@@ -26,6 +26,9 @@ export default defineConfig({
         if (item.url === 'https://www.circuitdiagramgenerator.ai/') {
           return { ...item, changefreq: 'weekly', priority: 1.0 };
         }
+        if (item.url.includes('/simulator')) {
+          return { ...item, changefreq: 'weekly', priority: 0.9 };
+        }
         if (item.url.includes('/pricing')) {
           return { ...item, changefreq: 'monthly', priority: 0.9 };
         }

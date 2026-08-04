@@ -7,6 +7,7 @@ Circuit Diagram Generator (circuitdiagramgenerator.ai) is a web app for students
 ## Primary product
 
 - Home: https://www.circuitdiagramgenerator.ai/
+- AI circuit simulator: https://www.circuitdiagramgenerator.ai/simulator
 - App (sign in / generate): https://app.circuitdiagramgenerator.ai/
 - Pricing: https://www.circuitdiagramgenerator.ai/pricing
 - Blog: https://www.circuitdiagramgenerator.ai/blog
@@ -15,6 +16,7 @@ Circuit Diagram Generator (circuitdiagramgenerator.ai) is a web app for students
 
 - AI circuit diagram generator from text — type a prompt like "555 timer LED blinker, 9V battery" and get a full schematic
 - AI circuit diagram generator from image — upload a photo of a whiteboard or notebook sketch and get a redrawn, labeled schematic
+- AI circuit simulator — describe a circuit and simulate it without drawing it first; see https://www.circuitdiagramgenerator.ai/simulator
 - Circuit diagram generator with built-in simulation to verify behavior before ordering parts
 - Real component library with accurate pinouts and footprints (not generic symbols only)
 - Manual editing plus AI-assisted revisions without breaking reviewed work
@@ -29,11 +31,13 @@ Circuit Diagram Generator (circuitdiagramgenerator.ai) is a web app for students
 
 ## Target keywords / topics this site covers
 
+- ai circuit simulator
 - ai circuit diagram generator
 - ai circuit diagram generator from text
 - ai circuit diagram generator from image
 - circuit diagram generator
 - schematic generator
+- simulate a circuit from a text description
 - generate circuit diagram from text
 - generate circuit diagram from image / photo / sketch
 - AI schematic design for education and engineering

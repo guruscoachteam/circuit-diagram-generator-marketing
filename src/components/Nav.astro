@@ -2,7 +2,7 @@
 import { app } from '../lib/app';
 
 interface Props {
-  current?: 'home' | 'pricing' | 'blog' | 'privacy' | 'terms';
+  current?: 'home' | 'simulator' | 'pricing' | 'blog' | 'privacy' | 'terms';
 }
 const { current } = Astro.props;
 ---
@@ -22,6 +22,7 @@ const { current } = Astro.props;
   <div class="nav-links" id="nav-links">
     <a href={current === 'home' ? '#features' : '/#features'}>Features</a>
     <a href={current === 'home' ? '#how-it-works' : '/#how-it-works'}>How it works</a>
+    <a href="/simulator" aria-current={current === 'simulator' ? 'page' : undefined}>Simulator</a>
     <a href="/pricing" aria-current={current === 'pricing' ? 'page' : undefined}>Pricing</a>
     <a href="/blog" aria-current={current === 'blog' ? 'page' : undefined}>Blog</a>
     <a href={current === 'home' ? '#faq' : '/#faq'}>FAQ</a>
